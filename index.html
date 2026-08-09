@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cutting Edge &amp; Games Ltd. — Barbershop &amp; PS5 Lounge, Benin City</title>
+<meta name="description" content="Cutting Edge & Games Ltd. — a premium barbershop and PS5 game lounge in Benin City. Book your chair.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#04004d;
+    --navy-deep:#020029;
+    --navy-mid:#0d0a5e;
+    --white:#ffffff;
+    --paper:#f8f8fb;
+    --silver:#b9bbc9;
+    --gold:#c9a227;
+    --gold-dark:#9c7a1a;
+    --gold-soft: rgba(201,162,39,0.14);
+    --gold-line: rgba(201,162,39,0.45);
+    --line-w: rgba(4,0,77,0.14);
+    --line-n: rgba(255,255,255,0.16);
+    --muted-w: rgba(4,0,77,0.62);
+    --muted-n: rgba(255,255,255,0.66);
+    --radius: 2px;
+    --ease: cubic-bezier(0.16,1,0.3,1);
+    --ease-cinematic: cubic-bezier(0.22,0.61,0.36,1);
+    --ease-mask: cubic-bezier(0.65,0,0.35,1);
+    --ease-tilt: cubic-bezier(0.34,1.56,0.64,1);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--white);
+    color:var(--navy);
+    font-family:'Poppins',sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
+  }
+  h1,h2,h3,.display{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    line-height:1.02;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  .display-italic{ font-style:italic; font-weight:500; color:var(--gold); }
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+  button{font-family:inherit; cursor:pointer;}
+  ::selection{background:var(--gold); color:var(--navy);}
+  :focus-visible{outline:2px solid var(--navy); outline-offset:3px;}
+
+  .wrap{max-width:1220px; margin:0 auto; padding:0 28px;}
+  @media (max-width:640px){ .wrap{padding:0 20px;} }
+
+  .eyebrow{
+    font-family:'Poppins',sans-serif;
+    font-size:11.5px;
+    font-weight:600;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    display:flex; align-items:center; gap:10px;
+  }
+  .band-white .eyebrow{color:var(--navy);}
+  .band-navy .eyebrow{color:var(--silver);}
+  .eyebrow::before{content:"";width:26px;height:1px;background:var(--gold); display:inline-block; opacity:0.9;}
+
+  /* ---------- PHOTOGRAPHY FRAME ----------
+     Full-colour photography, framed with a clean navy hairline. */
+  .photo{position:relative; overflow:hidden; background:var(--navy); border:1px solid var(--line-w);}
+  .photo img, .photo video{
+    width:100%; height:100%; object-fit:cover; display:block;
+  }
+
+  /* ---------- SCISSOR CUT DIVIDER (signature element) ----------
+     Two stacked triangles meeting on a diagonal, like an open
+     blade cutting across the seam between bands, with a small
+     scissor-mark badge centred on the cut. */
+  .cut{position:relative; height:64px; overflow:hidden;}
+  .cut .base, .cut .slice{position:absolute; inset:0;}
+  .cut .slice{
+    clip-path:polygon(0 100%, 100% 100%, 100% 100%);
+    transition:clip-path 1s var(--ease-mask);
+  }
+  .cut.in .slice{clip-path:polygon(0 100%, 100% 0%, 100% 100%);}
+  .cut--nw .base{background:var(--navy);}
+  .cut--nw .slice{background:var(--white);}
+  .cut--wn .base{background:var(--white);}
+  .cut--wn .slice{background:var(--navy);}
+  .cut-badge{
+    position:absolute; top:50%; left:50%; transform:translate(-50%,-50%) rotate(0deg);
+    width:42px; height:42px; border-radius:50%;
+    background:var(--white); border:1px solid var(--gold);
+    display:flex; align-items:center; justify-content:center;
+    z-index:2;
+    transition:transform .5s var(--ease);
+  }
+  .cut:hover .cut-badge{transform:translate(-50%,-50%) rotate(90deg);}
+  .cut-badge svg{width:20px; height:20px;}
+  @media(max-width:640px){ .cut{height:44px;} .cut-badge{width:34px; height:34px;} .cut-badge svg{width:16px;height:16px;} }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    background:rgba(255,255,255,0.92);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line-w);
+    box-shadow:0 0 0 rgba(4,0,77,0);
+    transition:box-shadow .4s var(--ease), border-color .4s var(--ease);
+  }
+  header.scrolled{
+    box-shadow:0 8px 30px rgba(4,0,77,0.08);
+    border-bottom-color:var(--gold-line);
+  }
+  nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:14px 28px;
+    max-width:1220px; margin:0 auto;
+  }
+  .brand{display:flex; align-items:center; gap:10px;}
+  .brand img{height:34px; width:auto;}
+  .brand-name{font-family:'Fraunces',serif; font-weight:600; font-size:17px; letter-spacing:-0.01em; line-height:1.05;}
+  .brand-name small{display:block; font-family:'Poppins',sans-serif; font-weight:500; font-size:9px; letter-spacing:0.16em; color:var(--muted-w); text-transform:uppercase; margin-top:2px;}
+  .navlinks{display:flex; gap:32px; align-items:center;}
+  .navlinks a{
+    font-size:12.5px; letter-spacing:0.06em; text-transform:uppercase;
+    font-weight:600; color:var(--muted-w);
+    padding-bottom:4px; border-bottom:1px solid transparent;
+    transition:color .2s ease, border-color .2s ease;
+  }
+  .navlinks a:hover{color:var(--navy); border-color:var(--gold);}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:12px 24px;
+    font-size:11.5px; letter-spacing:0.12em; text-transform:uppercase; font-weight:600;
+    border:1px solid var(--navy); color:var(--white);
+    background:var(--navy);
+    border-radius:var(--radius);
+    transition:transform .35s var(--ease), background .3s var(--ease), color .3s var(--ease), border-color .3s var(--ease), box-shadow .35s var(--ease);
+  }
+  .btn:hover{background:transparent; color:var(--navy); transform:translateY(-2px);}
+  .btn:active{transform:translateY(0); transition-duration:.12s;}
+  .btn.ghost{background:transparent; color:var(--navy);}
+  .btn.ghost:hover{background:var(--navy); color:var(--white);}
+  .btn.on-navy{border-color:var(--white); color:var(--navy); background:var(--white);}
+  .btn.on-navy:hover{background:transparent; color:var(--white);}
+  .btn.on-navy.ghost{background:transparent; color:var(--white); border-color:rgba(255,255,255,0.5);}
+  .btn.on-navy.ghost:hover{background:var(--white); color:var(--navy);}
+  .btn.gold{border-color:var(--gold); color:var(--navy); background:var(--gold);}
+  .btn.gold:hover{background:transparent; color:var(--gold); box-shadow:inset 0 0 0 1px var(--gold); transform:translateY(-2px);}
+  .navcta{display:none;}
+  @media(min-width:860px){ .navcta{display:inline-flex;} }
+  .menutoggle{display:none; background:none; border:1px solid var(--line-w); color:var(--navy); padding:9px 12px; border-radius:var(--radius);}
+  @media(max-width:859px){ .navlinks{display:none;} .menutoggle{display:inline-flex;} }
+  #mnav{display:none; flex-direction:column; gap:2px; padding-bottom:18px;}
+  #mnav.show{display:flex;}
+  #mnav a{padding:10px 0; border-bottom:1px solid var(--line-w); font-size:13px; text-transform:uppercase; letter-spacing:0.08em; font-weight:600;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    background:radial-gradient(120% 100% at 15% 0%, var(--navy-mid) 0%, var(--navy) 45%, var(--navy-deep) 100%);
+    color:var(--white);
+    padding:150px 0 0;
+    overflow:hidden;
+  }
+  .hero-mark{
+    position:absolute; top:-6%; right:-10%; width:60%; opacity:0.06;
+    transform:rotate(8deg);
+    pointer-events:none;
+    will-change:transform;
+  }
+  .hero-grid{
+    display:grid; grid-template-columns:1.05fr 0.95fr; align-items:center; gap:40px;
+    position:relative; z-index:2;
+  }
+  @media(max-width:940px){ .hero-grid{grid-template-columns:1fr; gap:48px;} }
+  .hero h1{font-size:clamp(46px, 6.4vw, 84px); color:var(--white);}
+  .hero-sub{max-width:440px; margin-top:22px; font-size:16.5px; line-height:1.7; color:var(--muted-n);}
+  .hero-ctas{display:flex; gap:14px; margin-top:34px; flex-wrap:wrap;}
+  .hero-stats{display:flex; gap:0; margin-top:54px; border-top:1px solid var(--line-n); max-width:520px;}
+  .hero-stat{flex:1; padding:18px 20px 34px 0; border-right:1px solid var(--line-n);}
+  .hero-stat:last-child{border-right:none;}
+  .hero-stat .num{font-family:'Fraunces',serif; font-weight:600; font-size:32px; color:var(--gold);}
+  .hero-stat .lbl{font-size:10.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted-n); margin-top:4px; font-weight:500;}
+  .hero-photo{
+    position:relative; z-index:2;
+    aspect-ratio:4/5;
+    border:1px solid var(--gold-line);
+    padding:14px;
+    will-change:transform;
+  }
+  .hero-photo .photo{width:100%; height:100%;}
+  /* Ken Burns — slow continuous pan + zoom on the media itself,
+     independent of the wrapper's scroll-parallax transform. */
+  .hero-photo .photo img, .hero-photo .photo video{
+    animation:kenburns 22s var(--ease-cinematic) infinite alternate;
+    transform-origin:62% 38%;
+  }
+  @keyframes kenburns{
+    0%{ transform:scale(1) translate(0,0); }
+    100%{ transform:scale(1.12) translate(-1.5%, -2%); }
+  }
+  @media(max-width:940px){ .hero-photo{max-width:420px; margin:0 auto;} }
+
+  /* ---------- MARQUEE ---------- */
+  .marquee{background:var(--white); overflow:hidden; border-top:1px solid var(--gold-line); border-bottom:1px solid var(--gold-line);}
+  .marquee-track{display:flex; white-space:nowrap; animation:scroll-left 32s linear infinite; width:max-content;}
+  @media (prefers-reduced-motion: reduce){ .marquee-track{animation:none;} }
+  .marquee-track span{
+    font-family:'Poppins',sans-serif; font-weight:600; font-size:13px; letter-spacing:0.12em; text-transform:uppercase;
+    padding:16px 24px; display:inline-flex; align-items:center; gap:24px; color:var(--navy);
+  }
+  .marquee-track span::after{content:"✂"; font-size:12px; color:var(--gold-dark); opacity:0.85;}
+  @keyframes scroll-left{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
+
+  /* ---------- SECTIONS GENERIC ---------- */
+  section{padding:100px 0;}
+  .band-navy{background:var(--navy); color:var(--white);}
+  .band-white{background:var(--white); color:var(--navy);}
+  .sec-head{display:flex; justify-content:space-between; align-items:flex-end; gap:24px; margin-bottom:60px; flex-wrap:wrap;}
+  .sec-head h2{font-size:clamp(38px,5.6vw,58px);}
+  .band-white .sec-head h2{color:var(--navy);}
+  .band-navy .sec-head h2{color:var(--white);}
+  .sec-head p{max-width:360px; font-size:15px; line-height:1.7;}
+  .band-white .sec-head p{color:var(--muted-w);}
+  .band-navy .sec-head p{color:var(--muted-n);}
+  .eyebrow{margin-bottom:6px;}
+
+  /* ---------- SERVICES (editorial menu) ---------- */
+  .menu-list{max-width:820px;}
+  .menu-row{
+    display:flex; align-items:baseline; gap:14px;
+    padding:26px 0 26px 16px; margin-left:-16px; border-bottom:1px solid var(--line-w);
+    border-left:2px solid transparent;
+    transition:border-color .35s var(--ease), background .35s var(--ease);
+  }
+  .menu-row:hover{border-left-color:var(--gold); background:var(--gold-soft);}
+  .menu-row .mname{font-family:'Fraunces',serif; font-weight:600; font-size:24px; white-space:nowrap; color:var(--navy);}
+  .menu-row .mleader{flex:1; border-bottom:1px dotted rgba(4,0,77,0.35); transform:translateY(-6px); min-width:24px;}
+  .menu-row .mprice{font-family:'Fraunces',serif; font-weight:600; font-size:20px; white-space:nowrap; color:var(--gold-dark);}
+  .menu-row .mdesc{width:100%; font-size:13.5px; color:var(--muted-w); margin-top:6px; line-height:1.6; order:99;}
+  .menu-row .mtime{font-size:11px; color:var(--muted-w); white-space:nowrap; letter-spacing:0.04em;}
+
+  /* ---------- GAMES / PS5 LOUNGE ---------- */
+  .games-grid{display:grid; grid-template-columns:1.05fr 0.95fr; gap:64px; align-items:center;}
+  @media(max-width:900px){ .games-grid{grid-template-columns:1fr; gap:44px;} }
+  .games-copy{color:var(--muted-n); font-size:16px; line-height:1.75; margin-top:18px; max-width:460px;}
+  .stat-strip{display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line-n); border:1px solid var(--line-n); margin-top:38px;}
+  .stat-cell{background:var(--navy); padding:24px;}
+  .stat-cell .n{font-family:'Fraunces',serif; font-weight:600; font-size:34px; color:var(--gold);}
+  .stat-cell .l{font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted-n); margin-top:6px;}
+  .controller-frame{
+    border:1px solid var(--line-n); padding:52px; display:flex; align-items:center; justify-content:center;
+    aspect-ratio:1/1;
+  }
+  .controller-frame svg{width:78%; height:auto;}
+
+  /* ---------- GALLERY ---------- */
+  .gallery-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:14px;}
+  @media(max-width:900px){ .gallery-grid{grid-template-columns:repeat(3,1fr); gap:10px;} }
+  @media(max-width:600px){ .gallery-grid{grid-template-columns:repeat(2,1fr); gap:8px;} }
+  .gallery-grid figure{
+    margin:0; position:relative; overflow:hidden; aspect-ratio:1047/1501;
+    perspective:900px; will-change:transform;
+  }
+  .gallery-grid .photo{
+    width:100%; height:100%; border:none;
+    transform:scale(1.18);
+    transition:transform 1s var(--ease-cinematic);
+    transition-delay:calc(var(--i, 0) * 90ms + 60ms);
+  }
+  .gallery-grid .photo img{transition:transform .8s var(--ease-cinematic);}
+  .gallery-grid figure{box-shadow:inset 0 0 0 0px var(--gold); transition:box-shadow .4s var(--ease);}
+  .gallery-grid figure:hover{box-shadow:inset 0 0 0 2px var(--gold);}
+  .gallery-grid figure:hover img{transform:scale(1.1);}
+
+  /* Layered depth: the frame settles from a zoomed pan-in, then
+     tilts gently on hover while the image inside zooms a touch
+     further — two layers moving at different rates. */
+  .gallery-grid.stagger.in figure .photo{transform:scale(1);}
+  .gallery-grid.stagger.in figure:hover .photo{transform:scale(1.03) rotateX(-3deg) rotateY(4deg);}
+
+  /* Cut-blade mask — a gold panel wipes clear to reveal each photo,
+     alternating direction, echoing the scissor motif. */
+  .gallery-grid .wipe{
+    position:absolute; inset:0; z-index:3; background:var(--gold);
+    transform:scaleX(1);
+    transition:transform .85s var(--ease-mask);
+    transition-delay:calc(var(--i, 0) * 90ms);
+  }
+  .gallery-grid figure:nth-child(odd) .wipe{transform-origin:left;}
+  .gallery-grid figure:nth-child(even) .wipe{transform-origin:right;}
+  .gallery-grid.stagger.in .wipe{transform:scaleX(0);}
+
+  .gallery-grid .cap{
+    position:absolute; left:0; right:0; bottom:0; padding:12px 14px; z-index:2;
+    background:linear-gradient(0deg, rgba(2,0,41,0.85), transparent);
+    font-size:10.5px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--white);
+    opacity:0; transition:opacity .25s ease;
+  }
+  .gallery-grid figure:hover .cap{opacity:1;}
+
+  /* ---------- TESTIMONIALS ---------- */
+  .test-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line-n); border:1px solid var(--line-n);}
+  @media(max-width:860px){ .test-grid{grid-template-columns:1fr;} }
+  .test{background:var(--navy); padding:34px;}
+  .test .stars{color:var(--gold); font-size:13px; letter-spacing:0.2em;}
+  .test p{font-family:'Fraunces',serif; font-style:italic; font-weight:500; font-size:18px; line-height:1.6; margin-top:16px; color:var(--white);}
+  .test .who{margin-top:20px; font-size:11px; color:var(--muted-n); text-transform:uppercase; letter-spacing:0.1em; font-weight:600;}
+
+  /* ---------- BOOKING ---------- */
+  .booking-grid{display:grid; grid-template-columns:0.85fr 1.15fr; gap:70px;}
+  @media(max-width:900px){ .booking-grid{grid-template-columns:1fr; gap:44px;} }
+  .booking-info h2{font-size:clamp(38px,5.6vw,58px); color:var(--navy);}
+  .booking-info p{color:var(--muted-w); font-size:15.5px; line-height:1.75; margin-top:18px; max-width:420px;}
+  .hours{margin-top:36px; border-top:1px solid var(--line-w);}
+  .hours-row{display:flex; justify-content:space-between; padding:13px 0; border-bottom:1px solid var(--line-w); font-size:14px;}
+  .hours-row .d{color:var(--muted-w); text-transform:uppercase; font-size:11.5px; letter-spacing:0.06em; font-weight:600;}
+  .hours-row .t{color:var(--navy); font-weight:600;}
+  .contactline{margin-top:26px; display:flex; flex-direction:column; gap:8px; font-size:14px; color:var(--muted-w);}
+  .contactline b{color:var(--navy);}
+
+  form{padding:0;}
+  .frow{display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-bottom:8px;}
+  @media(max-width:520px){ .frow{grid-template-columns:1fr;} }
+  .field{display:flex; flex-direction:column; gap:8px; margin-bottom:26px;}
+  .field label{font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted-w); font-weight:600;}
+  .field input, .field select, .field textarea{
+    background:transparent; border:none; border-bottom:1px solid var(--line-w); color:var(--navy);
+    padding:9px 2px; font-family:'Poppins',sans-serif; font-size:15px; border-radius:0;
+    transition:border-color .2s ease;
+  }
+  .field input:focus, .field select:focus, .field textarea:focus{ border-color:var(--navy); outline:none; }
+  .field textarea{resize:vertical; min-height:70px;}
+  .frow .field{margin-bottom:0;}
+  .submitrow{display:flex; align-items:center; gap:18px; margin-top:10px; flex-wrap:wrap;}
+  .submitrow .btn{padding:14px 30px; font-size:12px;}
+  .formnote{font-size:12.5px; color:var(--muted-w); line-height:1.6;}
+  .confirm{display:none; margin-top:22px; padding:16px 18px; border:1px solid var(--navy); background:var(--paper); color:var(--navy); font-size:14px; line-height:1.6;}
+  .confirm.show{display:block;}
+  .confirm b{color:var(--navy);}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--navy); color:var(--white); padding:64px 0 30px;}
+  .foot-top{display:flex; justify-content:space-between; gap:40px; flex-wrap:wrap; padding-bottom:44px; border-bottom:1px solid var(--line-n);}
+  .foot-brand{display:flex; gap:12px; align-items:flex-start;}
+  .foot-brand img{height:40px; width:auto; margin-top:2px;}
+  .foot-brand-text .brand-name{color:var(--white); font-size:19px;}
+  .foot-brand-text .brand-name small{color:var(--muted-n);}
+  .foot-brand p{color:var(--muted-n); font-size:14px; margin-top:12px; max-width:280px; line-height:1.6;}
+  .foot-cols{display:flex; gap:64px; flex-wrap:wrap;}
+  .foot-col h4{font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold); margin-bottom:16px; font-weight:600;}
+  .foot-col a, .foot-col span{display:block; color:var(--muted-n); font-size:14px; margin-bottom:10px;}
+  .foot-col a:hover{color:var(--white);}
+  .foot-bottom{display:flex; justify-content:space-between; padding-top:22px; font-size:12px; color:var(--muted-n); flex-wrap:wrap; gap:10px;}
+
+  .reveal{opacity:0; transform:translateY(26px) scale(0.985); transition:opacity .9s var(--ease), transform .9s var(--ease);}
+  .reveal.in{opacity:1; transform:translateY(0) scale(1);}
+
+  /* Staggered children — parent gets .stagger, JS assigns --i per child */
+  .stagger > *{
+    opacity:0; transform:translateY(20px);
+    transition:opacity .7s var(--ease), transform .7s var(--ease);
+    transition-delay:calc(var(--i, 0) * 70ms);
+  }
+  .stagger.in > *{opacity:1; transform:translateY(0);}
+
+  /* Hero load-in sequence */
+  .hero-seq{opacity:0; transform:translateY(22px); transition:opacity .9s var(--ease), transform .9s var(--ease); transition-delay:calc(var(--i,0) * 110ms);}
+  body.loaded .hero-seq{opacity:1; transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a href="#top" class="brand">
+      <img src="./mark-navy.png" alt="">
+      <span class="brand-name">Cutting Edge<small>&amp; Games Ltd.</small></span>
+    </a>
+    <div class="navlinks">
+      <a href="#services">Services</a>
+      <a href="#lounge">PS5 Lounge</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#booking">Book</a>
+      <a href="#visit">Visit</a>
+    </div>
+    <a href="#booking" class="btn navcta">Book Now</a>
+    <button class="menutoggle" aria-label="Menu" onclick="document.getElementById('mnav').classList.toggle('show')">☰</button>
+  </nav>
+  <div id="mnav" class="wrap">
+    <a href="#services">Services</a>
+    <a href="#lounge">PS5 Lounge</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#booking">Book</a>
+    <a href="#visit">Visit</a>
+  </div>
+</header>
+
+<div id="top"></div>
+<section class="hero">
+  <img class="hero-mark" src="./mark-white.png" alt="">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow hero-seq" style="--i:0">Barbershop &amp; PS5 Lounge — Benin City</div>
+      <h1 class="hero-seq" style="--i:1">Precision<br>is the <span class="display-italic">point.</span></h1>
+      <p class="hero-sub hero-seq" style="--i:2">Where a clean fade meets an even cleaner wait. Settle into a PS5 station while your barber gets your chair ready — right in the heart of Benin City.</p>
+      <div class="hero-ctas hero-seq" style="--i:3">
+        <a href="#booking" class="btn gold">Book a Chair</a>
+        <a href="#services" class="btn on-navy ghost">See the Menu</a>
+      </div>
+      <div class="hero-stats hero-seq" style="--i:4">
+        <div class="hero-stat"><div class="num" data-count="6">0</div><div class="lbl">Chairs on deck</div></div>
+        <div class="hero-stat"><div class="num" data-count="4">0</div><div class="lbl">PS5 stations</div></div>
+        <div class="hero-stat"><div class="num" data-count="7d">0</div><div class="lbl">Open weekly</div></div>
+      </div>
+    </div>
+    <div class="hero-photo hero-seq" style="--i:1.4">
+      <div class="photo" id="heroPhotoInner">
+        <video autoplay muted loop playsinline preload="auto" poster="./hero-poster.jpg" aria-label="Fresh fade being cut in the shop">
+          <source src="./hero-cut.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cut cut--nw"><div class="base"></div><div class="slice"></div>
+  <div class="cut-badge"><svg viewBox="0 0 24 24" fill="none" stroke="#04004d" stroke-width="1.6"><circle cx="6" cy="6" r="2.6"/><circle cx="6" cy="18" r="2.6"/><line x1="20" y1="4" x2="8.2" y2="15.8"/><line x1="8.2" y1="8.2" x2="20" y2="20"/></svg></div>
+</div>
+
+<div class="marquee">
+  <div class="marquee-track">
+    <span>Skin Fades</span><span>Beard Sculpting</span><span>Braids &amp; Twists</span><span>Kids Cuts</span><span>Hair Design</span><span>Hot Towel Shave</span><span>PS5 Lounge</span><span>Benin City</span>
+    <span>Skin Fades</span><span>Beard Sculpting</span><span>Braids &amp; Twists</span><span>Kids Cuts</span><span>Hair Design</span><span>Hot Towel Shave</span><span>PS5 Lounge</span><span>Benin City</span>
+  </div>
+</div>
+
+<!-- ===================== SERVICES ===================== -->
+<section id="services" class="band-white">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <div class="eyebrow">The Menu</div>
+        <h2>Every cut,<br>dialed in.</h2>
+      </div>
+      <p>Sharp lines, clean fades, and beard work that holds its shape. Every service ends with a mirror check you'll actually nod at.</p>
+    </div>
+
+    <div class="menu-list reveal stagger">
+      <div class="menu-row">
+        <span class="mname">Skin Fade</span>
+        <span class="mleader"></span>
+        <span class="mprice">₦8,000</span>
+        <span class="mdesc">Razor-sharp taper from skin to crown, shaped to your hairline and finished with a liner touch-up. <span class="mtime">45 min</span></span>
+      </div>
+      <div class="menu-row">
+        <span class="mname">Beard Sculpt</span>
+        <span class="mleader"></span>
+        <span class="mprice">₦4,500</span>
+        <span class="mdesc">Line-up, shape and hot towel finish, built around your jaw, not a template. <span class="mtime">25 min</span></span>
+      </div>
+      <div class="menu-row">
+        <span class="mname">The Full Groom</span>
+        <span class="mleader"></span>
+        <span class="mprice">₦13,500</span>
+        <span class="mdesc">Fade, beard sculpt, hot towel shave and wash — the complete reset. <span class="mtime">75 min</span></span>
+      </div>
+      <div class="menu-row">
+        <span class="mname">Braids &amp; Twists</span>
+        <span class="mleader"></span>
+        <span class="mprice">from ₦10,000</span>
+        <span class="mdesc">Cornrows, box braids or twist styles with a clean part and tapered edges. <span class="mtime">90+ min</span></span>
+      </div>
+      <div class="menu-row">
+        <span class="mname">Kids Cut</span>
+        <span class="mleader"></span>
+        <span class="mprice">₦5,000</span>
+        <span class="mdesc">Patient hands, quick fades — ages 12 &amp; under. <span class="mtime">30 min</span></span>
+      </div>
+      <div class="menu-row">
+        <span class="mname">Hair Design</span>
+        <span class="mleader"></span>
+        <span class="mprice">from ₦3,000</span>
+        <span class="mdesc">Custom part lines, freehand designs or a fresh colour to finish your look. <span class="mtime">15+ min</span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cut cut--wn"><div class="base"></div><div class="slice"></div>
+  <div class="cut-badge"><svg viewBox="0 0 24 24" fill="none" stroke="#04004d" stroke-width="1.6"><circle cx="6" cy="6" r="2.6"/><circle cx="6" cy="18" r="2.6"/><line x1="20" y1="4" x2="8.2" y2="15.8"/><line x1="8.2" y1="8.2" x2="20" y2="20"/></svg></div>
+</div>
+
+<!-- ===================== PS5 LOUNGE ===================== -->
+<section id="lounge" class="band-navy">
+  <div class="wrap">
+    <div class="games-grid">
+      <div class="reveal">
+        <div class="eyebrow">The Lounge</div>
+        <h2>Your wait just became<br>your favourite part.</h2>
+        <p class="games-copy">No dead time in the waiting chair. Drop into a match on PS5 while your barber gets your station ready — controllers are free the moment you walk in.</p>
+        <div class="stat-strip stagger">
+          <div class="stat-cell"><div class="n" data-count="4">0</div><div class="l">PS5 Stations</div></div>
+          <div class="stat-cell"><div class="n" data-count="40+">0</div><div class="l">Titles Loaded</div></div>
+          <div class="stat-cell"><div class="n">Free</div><div class="l">While You Wait</div></div>
+          <div class="stat-cell"><div class="n" data-count="2×">0</div><div class="l">Controllers / Station</div></div>
+        </div>
+      </div>
+      <div class="controller-frame reveal">
+        <svg viewBox="0 0 200 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M55 30 H145 C175 30 190 55 185 82 C181 104 163 108 150 96 L138 84 H62 L50 96 C37 108 19 104 15 82 C10 55 25 30 55 30 Z" stroke="#ffffff" stroke-width="2.4"/>
+          <line x1="40" y1="58" x2="40" y2="76" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round"/>
+          <line x1="31" y1="67" x2="49" y2="67" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round"/>
+          <circle cx="150" cy="58" r="4.2" stroke="#ffffff" stroke-width="2"/>
+          <circle cx="164" cy="72" r="4.2" stroke="#ffffff" stroke-width="2"/>
+          <circle cx="136" cy="72" r="4.2" stroke="#ffffff" stroke-width="2"/>
+          <circle cx="150" cy="86" r="4.2" stroke="#ffffff" stroke-width="2"/>
+          <circle cx="80" cy="52" r="9" stroke="#ffffff" stroke-width="2"/>
+          <circle cx="118" cy="52" r="9" stroke="#ffffff" stroke-width="2"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cut cut--nw"><div class="base"></div><div class="slice"></div>
+  <div class="cut-badge"><svg viewBox="0 0 24 24" fill="none" stroke="#04004d" stroke-width="1.6"><circle cx="6" cy="6" r="2.6"/><circle cx="6" cy="18" r="2.6"/><line x1="20" y1="4" x2="8.2" y2="15.8"/><line x1="8.2" y1="8.2" x2="20" y2="20"/></svg></div>
+</div>
+
+<!-- ===================== GALLERY ===================== -->
+<section id="gallery" class="band-white">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <div class="eyebrow">Fresh Off The Chair</div>
+        <h2>Recent work.</h2>
+      </div>
+      <p>Every fade below walked out of this shop this month. Tag us in yours.</p>
+    </div>
+  </div>
+  <div class="gallery-grid stagger">
+    <figure><div class="photo"><img src="./cut-01.jpg" alt="Client with a textured curl top and low taper fade"></div><span class="wipe"></span><figcaption class="cap">Curl Top / Low Taper</figcaption></figure>
+    <figure><div class="photo"><img src="./cut-02.jpg" alt="Barber shaping a sharp part line into a curly fade"></div><span class="wipe"></span><figcaption class="cap">Sharp Part Line</figcaption></figure>
+    <figure><div class="photo"><img src="./cut-07.jpg" alt="Drop fade with a shape-up around the beard"></div><span class="wipe"></span><figcaption class="cap">Drop Fade + Beard</figcaption></figure>
+    <figure><div class="photo"><img src="./cut-03.jpg" alt="Fresh afro fade with tight sides"></div><span class="wipe"></span><figcaption class="cap">Afro Fade</figcaption></figure>
+    <figure><div class="photo"><img src="./cut-05.jpg" alt="High top fade being blow dried"></div><span class="wipe"></span><figcaption class="cap">High Top Finish</figcaption></figure>
+    <figure><div class="photo"><img src="./cut-06.jpg" alt="Buzz cut with full beard lineup"></div><span class="wipe"></span><figcaption class="cap">Buzz + Beard Line</figcaption></figure>
+    <figure><div class="photo"><img src="./cut-04.jpg" alt="Boxy fringe fade"></div><span class="wipe"></span><figcaption class="cap">Boxy Fringe</figcaption></figure>
+    <figure><div class="photo"><img src="./cut-08.jpg" alt="Twisted braids with a burst fade"></div><span class="wipe"></span><figcaption class="cap">Braids / Burst Fade</figcaption></figure>
+  </div>
+</section>
+
+<div class="cut cut--wn"><div class="base"></div><div class="slice"></div>
+  <div class="cut-badge"><svg viewBox="0 0 24 24" fill="none" stroke="#04004d" stroke-width="1.6"><circle cx="6" cy="6" r="2.6"/><circle cx="6" cy="18" r="2.6"/><line x1="20" y1="4" x2="8.2" y2="15.8"/><line x1="8.2" y1="8.2" x2="20" y2="20"/></svg></div>
+</div>
+
+<!-- ===================== TESTIMONIALS ===================== -->
+<section class="band-navy">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <div class="eyebrow">Word Around The Chair</div>
+        <h2>What clients say.</h2>
+      </div>
+    </div>
+    <div class="test-grid reveal stagger">
+      <div class="test">
+        <div class="stars">★★★★★</div>
+        <p>Been chasing a barber who gets my line right for years. Found it here in Benin. My son's on PS5 while I get faded — we're both happy.</p>
+        <div class="who">— Tunde A.</div>
+      </div>
+      <div class="test">
+        <div class="stars">★★★★★</div>
+        <p>The Full Groom is worth every naira. Hot towel finish alone brings me back weekly.</p>
+        <div class="who">— Chidi O.</div>
+      </div>
+      <div class="test">
+        <div class="stars">★★★★★</div>
+        <p>Booked on WhatsApp, was seated on time, and still had a match in on PS5 before my name was called.</p>
+        <div class="who">— Emeka N.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cut cut--nw"><div class="base"></div><div class="slice"></div>
+  <div class="cut-badge"><svg viewBox="0 0 24 24" fill="none" stroke="#04004d" stroke-width="1.6"><circle cx="6" cy="6" r="2.6"/><circle cx="6" cy="18" r="2.6"/><line x1="20" y1="4" x2="8.2" y2="15.8"/><line x1="8.2" y1="8.2" x2="20" y2="20"/></svg></div>
+</div>
+
+<!-- ===================== BOOKING ===================== -->
+<section id="booking" class="band-white">
+  <div class="wrap">
+    <div class="booking-grid">
+      <div class="booking-info reveal">
+        <div class="eyebrow">Book A Chair</div>
+        <h2>Lock in<br>your slot.</h2>
+        <p>Fill in your details and we'll send your booking straight to our WhatsApp — a barber confirms your time personally, usually within minutes.</p>
+
+        <div id="visit" class="hours">
+          <div class="hours-row"><span class="d">Mon – Fri</span><span class="t">9:00 AM – 9:00 PM</span></div>
+          <div class="hours-row"><span class="d">Saturday</span><span class="t">8:00 AM – 10:00 PM</span></div>
+          <div class="hours-row"><span class="d">Sunday</span><span class="t">11:00 AM – 7:00 PM</span></div>
+        </div>
+        <div class="contactline">
+          <span><b>Address —</b> Update with your exact address, Benin City, Edo State.</span>
+          <span><b>Phone / WhatsApp —</b> Update with your business number.</span>
+        </div>
+      </div>
+
+      <form id="bookingForm" class="reveal" novalidate>
+        <div class="frow">
+          <div class="field">
+            <label for="fname">Full name</label>
+            <input type="text" id="fname" name="fname" placeholder="e.g. Daniel Okafor" required>
+          </div>
+          <div class="field">
+            <label for="fphone">Phone number</label>
+            <input type="tel" id="fphone" name="fphone" placeholder="e.g. 0803 000 0000" required>
+          </div>
+        </div>
+
+        <div class="frow">
+          <div class="field">
+            <label for="fservice">Service</label>
+            <select id="fservice" name="fservice" required>
+              <option value="" disabled selected>Choose a service</option>
+              <option>Skin Fade — ₦8,000</option>
+              <option>Beard Sculpt — ₦4,500</option>
+              <option>The Full Groom — ₦13,500</option>
+              <option>Braids &amp; Twists — from ₦10,000</option>
+              <option>Kids Cut — ₦5,000</option>
+              <option>Hair Design — from ₦3,000</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="fbarber">Preferred barber</label>
+            <select id="fbarber" name="fbarber">
+              <option value="No preference">No preference</option>
+              <option>Emeka</option>
+              <option>Kelvin</option>
+              <option>Bayo</option>
+              <option>Tobi</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="frow">
+          <div class="field">
+            <label for="fdate">Preferred date</label>
+            <input type="date" id="fdate" name="fdate" required>
+          </div>
+          <div class="field">
+            <label for="ftime">Preferred time</label>
+            <input type="time" id="ftime" name="ftime" required>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="fnotes">Notes (optional)</label>
+          <textarea id="fnotes" name="fnotes" placeholder="Anything your barber should know — style reference, allergies, kids in tow..."></textarea>
+        </div>
+
+        <div class="submitrow">
+          <button type="submit" class="btn gold">Send Booking Request</button>
+          <span class="formnote">Sends via WhatsApp — no account needed.</span>
+        </div>
+
+        <div class="confirm" id="confirmBox">
+          <b>Almost there —</b> your WhatsApp is opening with your booking details filled in. Just hit send and a barber will confirm your slot.
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <img src="./mark-white.png" alt="">
+        <div class="foot-brand-text">
+          <div class="brand-name">Cutting Edge<small>&amp; Games Ltd.</small></div>
+          <p>A premium barbershop and PS5 game lounge in the heart of Benin City. Precision cuts, elevated waits.</p>
+        </div>
+      </div>
+      <div class="foot-cols">
+        <div class="foot-col">
+          <h4>Shop</h4>
+          <a href="#services">Services</a>
+          <a href="#lounge">PS5 Lounge</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#booking">Book a Chair</a>
+        </div>
+        <div class="foot-col">
+          <h4>Contact</h4>
+          <span>Update with address</span>
+          <span>Update with phone</span>
+          <span>Update with email</span>
+        </div>
+        <div class="foot-col">
+          <h4>Follow</h4>
+          <a href="#">Instagram</a>
+          <a href="#">TikTok</a>
+          <a href="#">WhatsApp</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Cutting Edge &amp; Games Ltd. All rights reserved.</span>
+      <span>BENIN CITY, NIGERIA</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Assign stagger index to grouped children
+  document.querySelectorAll('.stagger').forEach(group=>{
+    Array.from(group.children).forEach((child,i)=> child.style.setProperty('--i', i));
+  });
+
+  // Count-up animation for stat numbers
+  function animateCount(el){
+    const raw = el.getAttribute('data-count');
+    if(!raw) return;
+    const match = raw.match(/^(\d+)(.*)$/);
+    if(!match){ el.textContent = raw; return; }
+    const target = parseInt(match[1], 10);
+    const suffix = match[2] || '';
+    if(reduceMotion){ el.textContent = raw; return; }
+    const duration = 1100;
+    const start = performance.now();
+    function tick(now){
+      const p = Math.min(1, (now - start) / duration);
+      const eased = 1 - Math.pow(1 - p, 4); // easeOutQuart
+      el.textContent = Math.round(target * eased) + suffix;
+      if(p < 1) requestAnimationFrame(tick);
+      else el.textContent = raw;
+    }
+    requestAnimationFrame(tick);
+  }
+
+  const countEls = document.querySelectorAll('[data-count]');
+
+  // Scroll reveal (+ triggers count-up for stat numbers inside)
+  const revealEls = document.querySelectorAll('.reveal, .stagger, .cut');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        e.target.querySelectorAll('[data-count]').forEach(animateCount);
+        io.unobserve(e.target);
+      }
+    });
+  }, {threshold:0.14});
+  revealEls.forEach(el=>io.observe(el));
+
+  document.querySelectorAll('#mnav a').forEach(a=>{
+    a.addEventListener('click', ()=> document.getElementById('mnav').classList.remove('show'));
+  });
+
+  // Hero load-in sequence
+  window.addEventListener('load', ()=>{
+    requestAnimationFrame(()=> document.body.classList.add('loaded'));
+    document.querySelectorAll('.hero-stats [data-count]').forEach(animateCount);
+  });
+
+  // Header shadow on scroll
+  const headerEl = document.querySelector('header');
+  function onScrollHeader(){
+    headerEl.classList.toggle('scrolled', window.scrollY > 12);
+  }
+  document.addEventListener('scroll', onScrollHeader, {passive:true});
+  onScrollHeader();
+
+  // Layered parallax: hero photo (foreground) and hero mark (background)
+  // drift at different rates, plus a subtle depth-drift across gallery tiles.
+  if(!reduceMotion){
+    const heroPhotoInner = document.getElementById('heroPhotoInner');
+    const heroMark = document.querySelector('.hero-mark');
+    const galleryFigures = document.querySelectorAll('.gallery-grid figure');
+    let targetY = 0, currentY = 0;
+    let targetMarkY = 0, currentMarkY = 0;
+
+    function onScrollParallax(){
+      targetY = Math.min(window.scrollY * 0.08, 26);
+      targetMarkY = Math.min(window.scrollY * 0.03, 40);
+    }
+    function raf(){
+      currentY += (targetY - currentY) * 0.08;
+      currentMarkY += (targetMarkY - currentMarkY) * 0.06;
+      if(heroPhotoInner) heroPhotoInner.style.transform = `translateY(${currentY}px) scale(1.06)`;
+      if(heroMark) heroMark.style.transform = `translateY(${currentMarkY}px) rotate(8deg)`;
+
+      galleryFigures.forEach((fig, i)=>{
+        const rect = fig.getBoundingClientRect();
+        const center = rect.top + rect.height / 2 - window.innerHeight / 2;
+        const depth = (i % 2 === 0) ? 0.05 : 0.08;
+        const offset = Math.max(-16, Math.min(16, -center * depth * 0.06));
+        fig.style.transform = `translateY(${offset}px)`;
+      });
+
+      requestAnimationFrame(raf);
+    }
+    document.addEventListener('scroll', onScrollParallax, {passive:true});
+    requestAnimationFrame(raf);
+  }
+
+  const WHATSAPP_NUMBER = "2348000000000"; // TODO: replace with the shop's real WhatsApp number (international format, no + or spaces)
+
+  const form = document.getElementById('bookingForm');
+  const confirmBox = document.getElementById('confirmBox');
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    if(!form.checkValidity()){ form.reportValidity(); return; }
+    const name = document.getElementById('fname').value.trim();
+    const phone = document.getElementById('fphone').value.trim();
+    const service = document.getElementById('fservice').value;
+    const barber = document.getElementById('fbarber').value;
+    const date = document.getElementById('fdate').value;
+    const time = document.getElementById('ftime').value;
+    const notes = document.getElementById('fnotes').value.trim();
+
+    let msg = `Hi Cutting Edge & Games! I'd like to book a chair.%0A%0A`;
+    msg += `*Name:* ${encodeURIComponent(name)}%0A`;
+    msg += `*Phone:* ${encodeURIComponent(phone)}%0A`;
+    msg += `*Service:* ${encodeURIComponent(service)}%0A`;
+    msg += `*Preferred barber:* ${encodeURIComponent(barber)}%0A`;
+    msg += `*Date:* ${encodeURIComponent(date)}%0A`;
+    msg += `*Time:* ${encodeURIComponent(time)}`;
+    if(notes){ msg += `%0A*Notes:* ${encodeURIComponent(notes)}`; }
+
+    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`;
+    confirmBox.classList.add('show');
+    window.open(url, '_blank');
+  });
+</script>
+
+</body>
+</html>
