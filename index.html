@@ -3,850 +3,880 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cutting Edge &amp; Games Ltd. — Barbershop &amp; PS5 Lounge, Benin City</title>
-<meta name="description" content="Cutting Edge & Games Ltd. — a premium barbershop and PS5 game lounge in Benin City. Book your chair.">
+<title>Cutting Edge &amp; Games — Barbershop + PS5 Lounge, Benin City</title>
+<meta name="description" content="Cutting Edge & Games Ltd. — fades, beards and braids under the neon, with PS5 stations while you wait. Benin City.">
+<meta name="theme-color" content="#0a090d">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&family=Schibsted+Grotesk:wght@400;500;600&family=Martian+Mono:wght@400;500&family=Yellowtail&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --navy:#04004d;
-    --navy-deep:#020029;
-    --navy-mid:#0d0a5e;
-    --white:#ffffff;
-    --paper:#f8f8fb;
-    --silver:#b9bbc9;
-    --gold:#c9a227;
-    --gold-dark:#9c7a1a;
-    --gold-soft: rgba(201,162,39,0.14);
-    --gold-line: rgba(201,162,39,0.45);
-    --line-w: rgba(4,0,77,0.14);
-    --line-n: rgba(255,255,255,0.16);
-    --muted-w: rgba(4,0,77,0.62);
-    --muted-n: rgba(255,255,255,0.66);
-    --radius: 2px;
-    --ease: cubic-bezier(0.16,1,0.3,1);
-    --ease-cinematic: cubic-bezier(0.22,0.61,0.36,1);
-    --ease-mask: cubic-bezier(0.65,0,0.35,1);
-    --ease-tilt: cubic-bezier(0.34,1.56,0.64,1);
-  }
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    margin:0;
-    background:var(--white);
-    color:var(--navy);
-    font-family:'Poppins',sans-serif;
-    -webkit-font-smoothing:antialiased;
-    overflow-x:hidden;
-  }
-  @media (prefers-reduced-motion: reduce){
-    html{scroll-behavior:auto;}
-    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
-  }
-  h1,h2,h3,.display{
-    font-family:'Fraunces',serif;
-    font-weight:600;
-    line-height:1.02;
-    margin:0;
-    letter-spacing:-0.01em;
-  }
-  .display-italic{ font-style:italic; font-weight:500; color:var(--gold); }
-  a{color:inherit; text-decoration:none;}
-  img{max-width:100%; display:block;}
-  button{font-family:inherit; cursor:pointer;}
-  ::selection{background:var(--gold); color:var(--navy);}
-  :focus-visible{outline:2px solid var(--navy); outline-offset:3px;}
+/* =========================================================
+   CUTTING EDGE — "Shop After Dark"
+   Everything here is lifted from the room itself:
+   · the chord-cut round mirror  → signature frame
+   · magenta LED strip            → the only glow colour
+   · orange-on-black wall canvases→ display type + quotes
+   · black-veined marble floor    → the one light surface
+   · the yellow neon script sign  → the logotype
+   ========================================================= */
+:root{
+  --ink:#0a090d;
+  --ink-2:#131118;
+  --ink-3:#1c1922;
+  --marble:#eeebe6;
+  --marble-2:#e2ded7;
+  --vein:#1b1a1f;
+  --neon:#ff2fd2;
+  --neon-hot:#ffb3f1;
+  --neon-dim:rgba(255,47,210,.16);
+  --canvas:#ff8d1e;          /* the "LOOK GOOD FEEL GOOD" orange */
+  --sign:#ffd166;            /* warm neon script */
+  --t-hi:#f5f2ee;
+  --t-mid:rgba(245,242,238,.62);
+  --t-lo:rgba(245,242,238,.34);
+  --rule:rgba(245,242,238,.12);
+  --ink-on-marble:#141217;
+  --mid-on-marble:rgba(20,18,23,.62);
+  --rule-on-marble:rgba(20,18,23,.16);
 
-  .wrap{max-width:1220px; margin:0 auto; padding:0 28px;}
-  @media (max-width:640px){ .wrap{padding:0 20px;} }
+  --f-display:'Big Shoulders Display', 'Arial Narrow', sans-serif;
+  --f-body:'Schibsted Grotesk', system-ui, sans-serif;
+  --f-mono:'Martian Mono', ui-monospace, monospace;
+  --f-script:'Yellowtail', cursive;
 
-  .eyebrow{
-    font-family:'Poppins',sans-serif;
-    font-size:11.5px;
-    font-weight:600;
-    letter-spacing:0.22em;
-    text-transform:uppercase;
-    display:flex; align-items:center; gap:10px;
-  }
-  .band-white .eyebrow{color:var(--navy);}
-  .band-navy .eyebrow{color:var(--silver);}
-  .eyebrow::before{content:"";width:26px;height:1px;background:var(--gold); display:inline-block; opacity:0.9;}
+  --snap:cubic-bezier(.2,.9,.1,1);
+  --gutter:clamp(16px, 4vw, 48px);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth; scroll-padding-top:72px}
+body{
+  margin:0; background:var(--ink); color:var(--t-hi);
+  font-family:var(--f-body); font-size:16px; line-height:1.6;
+  -webkit-font-smoothing:antialiased; overflow-x:hidden;
+}
+img,video,svg{display:block; max-width:100%}
+a{color:inherit; text-decoration:none}
+button{font:inherit; color:inherit; background:none; border:0; cursor:pointer; padding:0}
+::selection{background:var(--neon); color:var(--ink)}
+:focus-visible{outline:2px solid var(--neon); outline-offset:3px; border-radius:2px}
+.sr{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap}
 
-  /* ---------- PHOTOGRAPHY FRAME ----------
-     Full-colour photography, framed with a clean navy hairline. */
-  .photo{position:relative; overflow:hidden; background:var(--navy); border:1px solid var(--line-w);}
-  .photo img, .photo video{
-    width:100%; height:100%; object-fit:cover; display:block;
-  }
+.shell{max-width:1320px; margin:0 auto; padding:0 var(--gutter)}
+.mono{font-family:var(--f-mono); font-size:11px; letter-spacing:.04em; text-transform:uppercase}
+.display{font-family:var(--f-display); font-weight:900; text-transform:uppercase; line-height:.86; letter-spacing:-.005em; margin:0}
 
-  /* ---------- SCISSOR CUT DIVIDER (signature element) ----------
-     Two stacked triangles meeting on a diagonal, like an open
-     blade cutting across the seam between bands, with a small
-     scissor-mark badge centred on the cut. */
-  .cut{position:relative; height:64px; overflow:hidden;}
-  .cut .base, .cut .slice{position:absolute; inset:0;}
-  .cut .slice{
-    clip-path:polygon(0 100%, 100% 100%, 100% 100%);
-    transition:clip-path 1s var(--ease-mask);
-  }
-  .cut.in .slice{clip-path:polygon(0 100%, 100% 0%, 100% 100%);}
-  .cut--nw .base{background:var(--navy);}
-  .cut--nw .slice{background:var(--white);}
-  .cut--wn .base{background:var(--white);}
-  .cut--wn .slice{background:var(--navy);}
-  .cut-badge{
-    position:absolute; top:50%; left:50%; transform:translate(-50%,-50%) rotate(0deg);
-    width:42px; height:42px; border-radius:50%;
-    background:var(--white); border:1px solid var(--gold);
-    display:flex; align-items:center; justify-content:center;
-    z-index:2;
-    transition:transform .5s var(--ease);
-  }
-  .cut:hover .cut-badge{transform:translate(-50%,-50%) rotate(90deg);}
-  .cut-badge svg{width:20px; height:20px;}
-  @media(max-width:640px){ .cut{height:44px;} .cut-badge{width:34px; height:34px;} .cut-badge svg{width:16px;height:16px;} }
+/* ---------- neon primitives ---------- */
+.neon-text{
+  color:var(--neon-hot);
+  text-shadow:0 0 2px #fff, 0 0 8px var(--neon), 0 0 22px var(--neon), 0 0 48px rgba(255,47,210,.55);
+}
+.sign-text{
+  font-family:var(--f-script); font-weight:400; color:#fff6dc; text-transform:none; letter-spacing:0;
+  text-shadow:0 0 2px #fff, 0 0 10px var(--sign), 0 0 26px rgba(255,180,60,.75), 0 0 60px rgba(255,140,30,.4);
+}
+.flicker{animation:flicker 2.6s steps(1) .3s 1 both}
+@keyframes flicker{
+  0%{opacity:.08} 6%{opacity:1} 9%{opacity:.15} 14%{opacity:1} 22%{opacity:.3}
+  25%{opacity:1} 48%{opacity:1} 50%{opacity:.55} 52%{opacity:1} 100%{opacity:1}
+}
 
-  /* ---------- NAV ---------- */
-  header{
-    position:fixed; top:0; left:0; right:0; z-index:100;
-    background:rgba(255,255,255,0.92);
-    backdrop-filter:blur(10px);
-    border-bottom:1px solid var(--line-w);
-    box-shadow:0 0 0 rgba(4,0,77,0);
-    transition:box-shadow .4s var(--ease), border-color .4s var(--ease);
-  }
-  header.scrolled{
-    box-shadow:0 8px 30px rgba(4,0,77,0.08);
-    border-bottom-color:var(--gold-line);
-  }
-  nav{
-    display:flex; align-items:center; justify-content:space-between;
-    padding:14px 28px;
-    max-width:1220px; margin:0 auto;
-  }
-  .brand{display:flex; align-items:center; gap:10px;}
-  .brand img{height:34px; width:auto;}
-  .brand-name{font-family:'Fraunces',serif; font-weight:600; font-size:17px; letter-spacing:-0.01em; line-height:1.05;}
-  .brand-name small{display:block; font-family:'Poppins',sans-serif; font-weight:500; font-size:9px; letter-spacing:0.16em; color:var(--muted-w); text-transform:uppercase; margin-top:2px;}
-  .navlinks{display:flex; gap:32px; align-items:center;}
-  .navlinks a{
-    font-size:12.5px; letter-spacing:0.06em; text-transform:uppercase;
-    font-weight:600; color:var(--muted-w);
-    padding-bottom:4px; border-bottom:1px solid transparent;
-    transition:color .2s ease, border-color .2s ease;
-  }
-  .navlinks a:hover{color:var(--navy); border-color:var(--gold);}
-  .btn{
-    display:inline-flex; align-items:center; gap:8px;
-    padding:12px 24px;
-    font-size:11.5px; letter-spacing:0.12em; text-transform:uppercase; font-weight:600;
-    border:1px solid var(--navy); color:var(--white);
-    background:var(--navy);
-    border-radius:var(--radius);
-    transition:transform .35s var(--ease), background .3s var(--ease), color .3s var(--ease), border-color .3s var(--ease), box-shadow .35s var(--ease);
-  }
-  .btn:hover{background:transparent; color:var(--navy); transform:translateY(-2px);}
-  .btn:active{transform:translateY(0); transition-duration:.12s;}
-  .btn.ghost{background:transparent; color:var(--navy);}
-  .btn.ghost:hover{background:var(--navy); color:var(--white);}
-  .btn.on-navy{border-color:var(--white); color:var(--navy); background:var(--white);}
-  .btn.on-navy:hover{background:transparent; color:var(--white);}
-  .btn.on-navy.ghost{background:transparent; color:var(--white); border-color:rgba(255,255,255,0.5);}
-  .btn.on-navy.ghost:hover{background:var(--white); color:var(--navy);}
-  .btn.gold{border-color:var(--gold); color:var(--navy); background:var(--gold);}
-  .btn.gold:hover{background:transparent; color:var(--gold); box-shadow:inset 0 0 0 1px var(--gold); transform:translateY(-2px);}
-  .navcta{display:none;}
-  @media(min-width:860px){ .navcta{display:inline-flex;} }
-  .menutoggle{display:none; background:none; border:1px solid var(--line-w); color:var(--navy); padding:9px 12px; border-radius:var(--radius);}
-  @media(max-width:859px){ .navlinks{display:none;} .menutoggle{display:inline-flex;} }
-  #mnav{display:none; flex-direction:column; gap:2px; padding-bottom:18px;}
-  #mnav.show{display:flex;}
-  #mnav a{padding:10px 0; border-bottom:1px solid var(--line-w); font-size:13px; text-transform:uppercase; letter-spacing:0.08em; font-weight:600;}
+/* ---------- header ---------- */
+.bar{
+  position:fixed; inset:0 0 auto 0; z-index:50;
+  transition:background .3s, backdrop-filter .3s;
+}
+.bar.solid{background:rgba(10,9,13,.82); backdrop-filter:blur(14px) saturate(1.2); box-shadow:0 1px 0 var(--rule)}
+.bar .shell{display:flex; align-items:center; justify-content:space-between; height:68px; gap:20px}
+.logo{display:flex; align-items:baseline; gap:10px}
+.logo .sign-text{font-size:30px; line-height:1}
+.logo .mono{color:var(--t-lo); font-size:9.5px}
+.links{display:flex; gap:28px}
+.links a{font-family:var(--f-mono); font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--t-mid); position:relative; padding:6px 0}
+.links a::after{content:""; position:absolute; left:0; right:0; bottom:0; height:2px; background:var(--neon); box-shadow:0 0 10px var(--neon); transform:scaleX(0); transform-origin:left; transition:transform .35s var(--snap)}
+.links a:hover{color:var(--t-hi)}
+.links a:hover::after{transform:scaleX(1)}
+.pill{
+  display:inline-flex; align-items:center; gap:10px; height:44px; padding:0 20px;
+  font-family:var(--f-display); font-weight:800; font-size:17px; letter-spacing:.06em; text-transform:uppercase;
+  border-radius:999px; background:var(--neon); color:var(--ink);
+  box-shadow:0 0 0 0 rgba(255,47,210,.0), 0 6px 24px -6px rgba(255,47,210,.7);
+  transition:transform .25s var(--snap), box-shadow .25s;
+}
+.pill:hover{transform:translateY(-2px); box-shadow:0 0 0 4px rgba(255,47,210,.18), 0 10px 34px -6px rgba(255,47,210,.9)}
+.pill.line{background:transparent; color:var(--t-hi); box-shadow:inset 0 0 0 1.5px var(--rule)}
+.pill.line:hover{box-shadow:inset 0 0 0 1.5px var(--t-hi)}
+.burger{display:none; width:44px; height:44px; border-radius:50%; box-shadow:inset 0 0 0 1.5px var(--rule)}
+.burger span{display:block; width:16px; height:1.5px; background:var(--t-hi); margin:3px auto}
+.drawer{display:none}
+@media (max-width:880px){
+  .links,.bar .pill{display:none}
+  .burger{display:block}
+  .drawer.open{display:flex; flex-direction:column; padding:8px var(--gutter) 22px; background:rgba(10,9,13,.96)}
+  .drawer a{font-family:var(--f-display); font-weight:800; font-size:34px; text-transform:uppercase; padding:6px 0; border-bottom:1px solid var(--rule)}
+}
 
-  /* ---------- HERO ---------- */
-  .hero{
-    position:relative;
-    background:radial-gradient(120% 100% at 15% 0%, var(--navy-mid) 0%, var(--navy) 45%, var(--navy-deep) 100%);
-    color:var(--white);
-    padding:150px 0 0;
-    overflow:hidden;
-  }
-  .hero-mark{
-    position:absolute; top:-6%; right:-10%; width:60%; opacity:0.06;
-    transform:rotate(8deg);
-    pointer-events:none;
-    will-change:transform;
-  }
-  .hero-grid{
-    display:grid; grid-template-columns:1.05fr 0.95fr; align-items:center; gap:40px;
-    position:relative; z-index:2;
-  }
-  @media(max-width:940px){ .hero-grid{grid-template-columns:1fr; gap:48px;} }
-  .hero h1{font-size:clamp(46px, 6.4vw, 84px); color:var(--white);}
-  .hero-sub{max-width:440px; margin-top:22px; font-size:16.5px; line-height:1.7; color:var(--muted-n);}
-  .hero-ctas{display:flex; gap:14px; margin-top:34px; flex-wrap:wrap;}
-  .hero-stats{display:flex; gap:0; margin-top:54px; border-top:1px solid var(--line-n); max-width:520px;}
-  .hero-stat{flex:1; padding:18px 20px 34px 0; border-right:1px solid var(--line-n);}
-  .hero-stat:last-child{border-right:none;}
-  .hero-stat .num{font-family:'Fraunces',serif; font-weight:600; font-size:32px; color:var(--gold);}
-  .hero-stat .lbl{font-size:10.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted-n); margin-top:4px; font-weight:500;}
-  .hero-photo{
-    position:relative; z-index:2;
-    aspect-ratio:4/5;
-    border:1px solid var(--gold-line);
-    padding:14px;
-    will-change:transform;
-  }
-  .hero-photo .photo{width:100%; height:100%;}
-  /* Ken Burns — slow continuous pan + zoom on the media itself,
-     independent of the wrapper's scroll-parallax transform. */
-  .hero-photo .photo img, .hero-photo .photo video{
-    animation:kenburns 22s var(--ease-cinematic) infinite alternate;
-    transform-origin:62% 38%;
-  }
-  @keyframes kenburns{
-    0%{ transform:scale(1) translate(0,0); }
-    100%{ transform:scale(1.12) translate(-1.5%, -2%); }
-  }
-  @media(max-width:940px){ .hero-photo{max-width:420px; margin:0 auto;} }
+/* ---------- HERO ---------- */
+.hero{position:relative; min-height:100svh; padding:110px 0 56px; overflow:hidden; isolation:isolate}
+.hero::before{ /* LED spill on the floor */
+  content:""; position:absolute; z-index:-1; left:-10%; right:-10%; bottom:-30%; height:70%;
+  background:radial-gradient(50% 50% at 62% 40%, rgba(255,47,210,.22), transparent 70%);
+}
+.hero-grid{display:grid; grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr); gap:clamp(24px,4vw,64px); align-items:center}
+.hero h1{font-size:clamp(68px, 11.5vw, 188px)}
+.hero h1 .row{display:block; overflow:hidden}
+.hero h1 .row > span{display:block; transform:translateY(102%); animation:rise .9s var(--snap) forwards}
+.hero h1 .row:nth-child(2) > span{animation-delay:.08s}
+.hero h1 .row:nth-child(3) > span{animation-delay:.16s}
+.hero h1 .row:nth-child(4) > span{animation-delay:.24s}
+.hero h1 .c{color:var(--canvas)}
+@keyframes rise{to{transform:none}}
+.hero-meta{display:flex; gap:28px; align-items:flex-end; margin-top:34px; flex-wrap:wrap}
+.hero-meta p{max-width:380px; margin:0; color:var(--t-mid); font-size:17px}
+.hero-ctas{display:flex; gap:12px; flex-wrap:wrap}
 
-  /* ---------- MARQUEE ---------- */
-  .marquee{background:var(--white); overflow:hidden; border-top:1px solid var(--gold-line); border-bottom:1px solid var(--gold-line);}
-  .marquee-track{display:flex; white-space:nowrap; animation:scroll-left 32s linear infinite; width:max-content;}
-  @media (prefers-reduced-motion: reduce){ .marquee-track{animation:none;} }
-  .marquee-track span{
-    font-family:'Poppins',sans-serif; font-weight:600; font-size:13px; letter-spacing:0.12em; text-transform:uppercase;
-    padding:16px 24px; display:inline-flex; align-items:center; gap:24px; color:var(--navy);
-  }
-  .marquee-track span::after{content:"✂"; font-size:12px; color:var(--gold-dark); opacity:0.85;}
-  @keyframes scroll-left{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
+/* chord-cut mirror */
+.mirror{position:relative; width:100%; max-width:520px; justify-self:end; aspect-ratio:85/100}
+.mirror-glass{position:absolute; inset:0; clip-path:url(#mirrorClip); background:var(--ink-3);
+  animation:open-glass 1.4s var(--snap) .35s both}
+@keyframes open-glass{from{clip-path:inset(50% 0 50% 0)} to{clip-path:url(#mirrorClip)}}
+.mirror-glass video{width:100%; height:100%; object-fit:cover}
+.mirror-glass::after{ /* glass sheen */
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background:linear-gradient(115deg, rgba(255,255,255,.14) 0%, transparent 28%, transparent 70%, rgba(255,47,210,.18) 100%);
+}
+.mirror-led{position:absolute; inset:0; width:100%; height:100%; overflow:visible; pointer-events:none}
+.mirror-led path{fill:none; stroke:var(--neon-hot); stroke-width:3; vector-effect:non-scaling-stroke;
+  filter:drop-shadow(0 0 4px var(--neon)) drop-shadow(0 0 14px var(--neon)) drop-shadow(0 0 30px rgba(255,47,210,.6));
+  stroke-dasharray:1; stroke-dashoffset:1; animation:draw 1.6s ease-out .5s forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.mirror .sign-text{position:absolute; left:-8%; top:22%; font-size:clamp(46px,6vw,84px); line-height:.82; transform:rotate(-6deg); z-index:2; pointer-events:none}
+.mirror-tag{position:absolute; right:0; bottom:-30px; color:var(--t-lo)}
 
-  /* ---------- SECTIONS GENERIC ---------- */
-  section{padding:100px 0;}
-  .band-navy{background:var(--navy); color:var(--white);}
-  .band-white{background:var(--white); color:var(--navy);}
-  .sec-head{display:flex; justify-content:space-between; align-items:flex-end; gap:24px; margin-bottom:60px; flex-wrap:wrap;}
-  .sec-head h2{font-size:clamp(38px,5.6vw,58px);}
-  .band-white .sec-head h2{color:var(--navy);}
-  .band-navy .sec-head h2{color:var(--white);}
-  .sec-head p{max-width:360px; font-size:15px; line-height:1.7;}
-  .band-white .sec-head p{color:var(--muted-w);}
-  .band-navy .sec-head p{color:var(--muted-n);}
-  .eyebrow{margin-bottom:6px;}
+.hero-foot{display:flex; justify-content:space-between; gap:16px; margin-top:56px; padding-top:18px; border-top:1px solid var(--rule); color:var(--t-lo); flex-wrap:wrap}
+.status{display:inline-flex; align-items:center; gap:8px; color:var(--t-mid)}
+.status i{width:8px; height:8px; border-radius:50%; background:var(--t-lo)}
+.status.open i{background:#5dff9b; box-shadow:0 0 10px #5dff9b}
 
-  /* ---------- SERVICES (editorial menu) ---------- */
-  .menu-list{max-width:820px;}
-  .menu-row{
-    display:flex; align-items:baseline; gap:14px;
-    padding:26px 0 26px 16px; margin-left:-16px; border-bottom:1px solid var(--line-w);
-    border-left:2px solid transparent;
-    transition:border-color .35s var(--ease), background .35s var(--ease);
-  }
-  .menu-row:hover{border-left-color:var(--gold); background:var(--gold-soft);}
-  .menu-row .mname{font-family:'Fraunces',serif; font-weight:600; font-size:24px; white-space:nowrap; color:var(--navy);}
-  .menu-row .mleader{flex:1; border-bottom:1px dotted rgba(4,0,77,0.35); transform:translateY(-6px); min-width:24px;}
-  .menu-row .mprice{font-family:'Fraunces',serif; font-weight:600; font-size:20px; white-space:nowrap; color:var(--gold-dark);}
-  .menu-row .mdesc{width:100%; font-size:13.5px; color:var(--muted-w); margin-top:6px; line-height:1.6; order:99;}
-  .menu-row .mtime{font-size:11px; color:var(--muted-w); white-space:nowrap; letter-spacing:0.04em;}
+@media (max-width:900px){
+  .hero{padding-top:92px}
+  .hero-grid{grid-template-columns:1fr}
+  .mirror{justify-self:center; max-width:320px; margin:24px auto 30px}
+  .mirror .sign-text{left:-4%}
+}
 
-  /* ---------- GAMES / PS5 LOUNGE ---------- */
-  .games-grid{display:grid; grid-template-columns:1.05fr 0.95fr; gap:64px; align-items:center;}
-  @media(max-width:900px){ .games-grid{grid-template-columns:1fr; gap:44px;} }
-  .games-copy{color:var(--muted-n); font-size:16px; line-height:1.75; margin-top:18px; max-width:460px;}
-  .stat-strip{display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line-n); border:1px solid var(--line-n); margin-top:38px;}
-  .stat-cell{background:var(--navy); padding:24px;}
-  .stat-cell .n{font-family:'Fraunces',serif; font-weight:600; font-size:34px; color:var(--gold);}
-  .stat-cell .l{font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted-n); margin-top:6px;}
-  .controller-frame{
-    border:1px solid var(--line-n); padding:52px; display:flex; align-items:center; justify-content:center;
-    aspect-ratio:1/1;
-  }
-  .controller-frame svg{width:78%; height:auto;}
+/* ---------- SERVICES: the marble price board ---------- */
+.board{
+  position:relative; color:var(--ink-on-marble); background:var(--marble); padding:clamp(72px,10vw,132px) 0;
+  isolation:isolate; overflow:hidden;
+}
+.board-head{display:grid; grid-template-columns:1fr auto; align-items:end; gap:24px; margin-bottom:clamp(36px,5vw,64px)}
+.board-head h2{font-size:clamp(56px,9vw,132px)}
+.board-head p{max-width:330px; margin:0; color:var(--mid-on-marble)}
+.board-head .mono{color:var(--mid-on-marble); margin-bottom:14px; display:block}
+@media (max-width:760px){ .board-head{grid-template-columns:1fr} }
 
-  /* ---------- GALLERY ---------- */
-  .gallery-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:14px;}
-  @media(max-width:900px){ .gallery-grid{grid-template-columns:repeat(3,1fr); gap:10px;} }
-  @media(max-width:600px){ .gallery-grid{grid-template-columns:repeat(2,1fr); gap:8px;} }
-  .gallery-grid figure{
-    margin:0; position:relative; overflow:hidden; aspect-ratio:1047/1501;
-    perspective:900px; will-change:transform;
-  }
-  .gallery-grid .photo{
-    width:100%; height:100%; border:none;
-    transform:scale(1.18);
-    transition:transform 1s var(--ease-cinematic);
-    transition-delay:calc(var(--i, 0) * 90ms + 60ms);
-  }
-  .gallery-grid .photo img{transition:transform .8s var(--ease-cinematic);}
-  .gallery-grid figure{box-shadow:inset 0 0 0 0px var(--gold); transition:box-shadow .4s var(--ease);}
-  .gallery-grid figure:hover{box-shadow:inset 0 0 0 2px var(--gold);}
-  .gallery-grid figure:hover img{transform:scale(1.1);}
+.svc{list-style:none; margin:0; padding:0; border-top:2px solid var(--ink-on-marble)}
+.svc li{
+  display:grid; grid-template-columns:44px minmax(0,1.3fr) minmax(0,1fr) 120px 56px; align-items:center; gap:clamp(12px,2vw,28px);
+  padding:20px 0; border-bottom:1px solid var(--rule-on-marble); position:relative; cursor:pointer;
+  transition:background .25s;
+}
+.svc li::before{content:""; position:absolute; inset:0 calc(var(--gutter) * -1); background:var(--ink-on-marble); transform:scaleY(0); transform-origin:bottom; transition:transform .4s var(--snap); z-index:-1}
+.svc li:hover::before, .svc li[aria-checked="true"]::before{transform:scaleY(1)}
+.svc li:hover, .svc li[aria-checked="true"]{color:var(--t-hi)}
+.svc li:hover .s-desc, .svc li[aria-checked="true"] .s-desc{color:var(--t-mid)}
+.svc li:hover .s-idx, .svc li[aria-checked="true"] .s-idx{color:var(--t-lo)}
+.s-idx{color:var(--mid-on-marble)}
+.s-name{font-family:var(--f-display); font-weight:900; font-size:clamp(34px,4.6vw,62px); line-height:.9; text-transform:uppercase}
+.s-desc{font-size:14px; color:var(--mid-on-marble); line-height:1.5}
+.s-time{display:flex; flex-direction:column; gap:7px}
+.s-time .track{height:6px; border-radius:6px; background:var(--rule-on-marble); overflow:hidden}
+.svc li:hover .track, .svc li[aria-checked="true"] .track{background:var(--rule)}
+.s-time .fill{display:block; height:100%; width:calc(var(--m) / 120 * 100%); background:var(--canvas); border-radius:6px; transform:scaleX(0); transform-origin:left; transition:transform 1s var(--snap) calc(var(--n) * 70ms)}
+.svc.seen .fill{transform:scaleX(1)}
+.s-time .mono{font-size:10px}
+.s-price{font-family:var(--f-display); font-weight:800; font-size:26px; text-align:right; white-space:nowrap; grid-column:5; grid-row:1}
+.s-price small{display:block; font-family:var(--f-mono); font-weight:400; font-size:9px; letter-spacing:.06em; opacity:.6}
+.s-add{position:absolute; right:-6px; top:50%; translate:0 -50%}
+.svc .tick{
+  width:30px; height:30px; border-radius:50%; box-shadow:inset 0 0 0 1.5px currentColor; display:grid; place-items:center; opacity:.4;
+  transition:background .2s, opacity .2s, transform .3s var(--snap);
+}
+.svc .tick svg{width:14px; height:14px; transition:transform .3s var(--snap)}
+.svc li[aria-checked="true"] .tick{background:var(--neon); box-shadow:0 0 16px var(--neon); color:var(--ink); opacity:1}
+.svc li[aria-checked="true"] .tick svg{transform:rotate(45deg)}
+.svc li:hover .tick{opacity:1}
+/* layout of price + tick share the last two columns */
+.svc li{grid-template-columns:44px minmax(0,1.3fr) minmax(0,1fr) 120px 110px 30px}
+.svc .s-price{grid-column:5}
+.svc .tick{grid-column:6}
+@media (max-width:900px){
+  .svc li{grid-template-columns:32px 1fr auto 30px; row-gap:8px}
+  .s-name{grid-column:2; grid-row:1}
+  .svc .s-price{grid-column:3; grid-row:1}
+  .svc .tick{grid-column:4; grid-row:1}
+  .s-desc{grid-column:2 / 5; grid-row:2}
+  .s-time{grid-column:2 / 5; grid-row:3; flex-direction:row; align-items:center; gap:12px}
+  .s-time .track{flex:1}
+}
 
-  /* Layered depth: the frame settles from a zoomed pan-in, then
-     tilts gently on hover while the image inside zooms a touch
-     further — two layers moving at different rates. */
-  .gallery-grid.stagger.in figure .photo{transform:scale(1);}
-  .gallery-grid.stagger.in figure:hover .photo{transform:scale(1.03) rotateX(-3deg) rotateY(4deg);}
+.tally{
+  position:sticky; bottom:16px; z-index:5; margin-top:28px; display:flex; align-items:center; justify-content:space-between; gap:16px;
+  background:var(--ink); color:var(--t-hi); border-radius:999px; padding:8px 8px 8px 24px;
+  box-shadow:0 18px 50px -14px rgba(10,9,13,.55);
+  transform:translateY(140%); opacity:0; transition:transform .5s var(--snap), opacity .3s;
+  max-width:640px;
+}
+.tally.on{transform:none; opacity:1}
+.tally b{font-family:var(--f-display); font-weight:800; font-size:24px; letter-spacing:.02em}
+.tally .mono{color:var(--t-mid)}
+@media (max-width:520px){ .tally{padding-left:18px} .tally b{font-size:20px} .tally .mono{display:none} }
 
-  /* Cut-blade mask — a gold panel wipes clear to reveal each photo,
-     alternating direction, echoing the scissor motif. */
-  .gallery-grid .wipe{
-    position:absolute; inset:0; z-index:3; background:var(--gold);
-    transform:scaleX(1);
-    transition:transform .85s var(--ease-mask);
-    transition-delay:calc(var(--i, 0) * 90ms);
-  }
-  .gallery-grid figure:nth-child(odd) .wipe{transform-origin:left;}
-  .gallery-grid figure:nth-child(even) .wipe{transform-origin:right;}
-  .gallery-grid.stagger.in .wipe{transform:scaleX(0);}
+/* ---------- LOUNGE ---------- */
+.lounge{position:relative; padding:clamp(80px,11vw,150px) 0; overflow:hidden; isolation:isolate}
+.lounge::after{ /* LED strip along the wall */
+  content:""; position:absolute; left:0; right:0; top:0; height:3px; background:var(--neon-hot);
+  box-shadow:0 0 12px var(--neon), 0 0 40px var(--neon), 0 0 120px 20px rgba(255,47,210,.35);
+}
+.lounge-grid{display:grid; grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr); gap:clamp(32px,6vw,96px); align-items:center}
+.lounge h2{font-size:clamp(56px,8.6vw,128px)}
+.lounge h2 .neon-text{display:block}
+.lounge .lede{color:var(--t-mid); font-size:17px; max-width:420px; margin:28px 0 0}
+.specs{margin:40px 0 0; padding:0; list-style:none; display:grid; grid-template-columns:1fr 1fr; border-top:1px solid var(--rule)}
+.specs li{padding:18px 0; border-bottom:1px solid var(--rule); display:flex; flex-direction:column; gap:2px}
+.specs li:nth-child(odd){padding-right:16px; border-right:1px solid var(--rule)}
+.specs li:nth-child(even){padding-left:20px}
+.specs b{font-family:var(--f-display); font-weight:800; font-size:40px; line-height:1}
+.specs .mono{color:var(--t-lo)}
 
-  .gallery-grid .cap{
-    position:absolute; left:0; right:0; bottom:0; padding:12px 14px; z-index:2;
-    background:linear-gradient(0deg, rgba(2,0,41,0.85), transparent);
-    font-size:10.5px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--white);
-    opacity:0; transition:opacity .25s ease;
-  }
-  .gallery-grid figure:hover .cap{opacity:1;}
+.stations{display:grid; grid-template-columns:1fr 1fr; gap:clamp(12px,2vw,22px)}
+.screen{
+  position:relative; aspect-ratio:16/10; border-radius:14px; background:#050407;
+  box-shadow:inset 0 0 0 1px var(--rule), 0 30px 60px -30px rgba(0,0,0,.8);
+  overflow:hidden; display:flex; flex-direction:column; justify-content:space-between; padding:14px 16px;
+  transition:transform .5s var(--snap), box-shadow .4s;
+}
+.screen::before{ /* scanlines */
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background:repeating-linear-gradient(0deg, rgba(255,255,255,.035) 0 1px, transparent 1px 3px);
+}
+.screen::after{ /* glow from the panel */
+  content:""; position:absolute; inset:-40%; pointer-events:none; opacity:.0; transition:opacity .4s;
+  background:radial-gradient(40% 40% at 50% 60%, rgba(255,47,210,.35), transparent 70%);
+}
+.screen:hover{transform:translateY(-6px) rotate(-.6deg); box-shadow:inset 0 0 0 1px rgba(255,47,210,.6), 0 30px 70px -24px rgba(255,47,210,.45)}
+.screen:hover::after{opacity:1}
+.screen:nth-child(2){translate:0 28px}
+.screen:nth-child(4){translate:0 28px}
+.screen .num{font-family:var(--f-display); font-weight:900; font-size:clamp(54px,6vw,86px); line-height:.8; color:transparent; -webkit-text-stroke:1.5px rgba(245,242,238,.5); position:relative}
+.screen:hover .num{-webkit-text-stroke-color:var(--neon-hot); filter:drop-shadow(0 0 8px var(--neon))}
+.screen .mono{display:flex; justify-content:space-between; color:var(--t-lo); position:relative}
+.screen .pad{position:relative; width:46px; height:46px; align-self:flex-end; opacity:.5}
+@media (max-width:900px){
+  .lounge-grid{grid-template-columns:1fr}
+  .screen:nth-child(2), .screen:nth-child(4){translate:0 16px}
+}
 
-  /* ---------- TESTIMONIALS ---------- */
-  .test-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line-n); border:1px solid var(--line-n);}
-  @media(max-width:860px){ .test-grid{grid-template-columns:1fr;} }
-  .test{background:var(--navy); padding:34px;}
-  .test .stars{color:var(--gold); font-size:13px; letter-spacing:0.2em;}
-  .test p{font-family:'Fraunces',serif; font-style:italic; font-weight:500; font-size:18px; line-height:1.6; margin-top:16px; color:var(--white);}
-  .test .who{margin-top:20px; font-size:11px; color:var(--muted-n); text-transform:uppercase; letter-spacing:0.1em; font-weight:600;}
+/* ---------- MIRROR WALL (gallery) ---------- */
+.wall{padding:clamp(72px,10vw,130px) 0 clamp(60px,8vw,100px); background:var(--ink-2); position:relative}
+.wall-head{display:flex; justify-content:space-between; align-items:flex-end; gap:24px; flex-wrap:wrap; margin-bottom:40px}
+.wall-head h2{font-size:clamp(56px,9vw,132px)}
+.wall-ctrl{display:flex; align-items:center; gap:14px}
+.wall-ctrl .count{font-family:var(--f-display); font-weight:800; font-size:28px; min-width:72px; text-align:right}
+.wall-ctrl .count span{color:var(--t-lo)}
+.round{width:52px; height:52px; border-radius:50%; box-shadow:inset 0 0 0 1.5px var(--rule); display:grid; place-items:center; transition:box-shadow .2s, background .2s}
+.round:hover{box-shadow:inset 0 0 0 1.5px var(--neon); background:var(--neon-dim)}
+.round svg{width:18px; height:18px}
+.strip{
+  display:flex; gap:clamp(14px,2vw,26px); overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none;
+  padding:10px var(--gutter) 24px; scroll-padding:0 var(--gutter); cursor:grab;
+}
+.strip::-webkit-scrollbar{display:none}
+.strip.dragging{cursor:grabbing; scroll-snap-type:none}
+.strip.dragging *{pointer-events:none}
+.frame{flex:0 0 clamp(230px, 26vw, 340px); scroll-snap-align:start; margin:0}
+.frame .arch{
+  position:relative; aspect-ratio:3/4.3; border-radius:999px 999px 10px 10px; overflow:hidden; background:var(--ink-3);
+}
+.frame img{width:100%; height:100%; object-fit:cover; transform:scale(1.04); transition:transform .9s var(--snap), filter .6s}
+.frame .arch::after{
+  content:""; position:absolute; inset:0; border-radius:inherit; pointer-events:none;
+  box-shadow:inset 0 0 0 1.5px rgba(245,242,238,.1); transition:box-shadow .4s;
+}
+.frame:hover img{transform:scale(1.1)}
+.frame:hover .arch::after{box-shadow:inset 0 0 0 2px var(--neon-hot), inset 0 0 30px rgba(255,47,210,.45)}
+.frame figcaption{display:flex; justify-content:space-between; gap:10px; margin-top:14px; color:var(--t-mid)}
+.frame figcaption b{font-family:var(--f-display); font-weight:800; font-size:22px; text-transform:uppercase; color:var(--t-hi); letter-spacing:.01em; line-height:1}
+.frame:nth-child(even){margin-top:48px}
+@media (max-width:640px){ .frame:nth-child(even){margin-top:0} }
 
-  /* ---------- BOOKING ---------- */
-  .booking-grid{display:grid; grid-template-columns:0.85fr 1.15fr; gap:70px;}
-  @media(max-width:900px){ .booking-grid{grid-template-columns:1fr; gap:44px;} }
-  .booking-info h2{font-size:clamp(38px,5.6vw,58px); color:var(--navy);}
-  .booking-info p{color:var(--muted-w); font-size:15.5px; line-height:1.75; margin-top:18px; max-width:420px;}
-  .hours{margin-top:36px; border-top:1px solid var(--line-w);}
-  .hours-row{display:flex; justify-content:space-between; padding:13px 0; border-bottom:1px solid var(--line-w); font-size:14px;}
-  .hours-row .d{color:var(--muted-w); text-transform:uppercase; font-size:11.5px; letter-spacing:0.06em; font-weight:600;}
-  .hours-row .t{color:var(--navy); font-weight:600;}
-  .contactline{margin-top:26px; display:flex; flex-direction:column; gap:8px; font-size:14px; color:var(--muted-w);}
-  .contactline b{color:var(--navy);}
+/* ---------- CANVAS WALL (reviews) ---------- */
+.canvases{background:var(--marble); color:var(--ink-on-marble); padding:clamp(80px,11vw,140px) 0; position:relative; overflow:hidden}
+.canvases .board-head h2{font-size:clamp(48px,7vw,100px)}
+.hang{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:clamp(18px,3vw,40px); align-items:start}
+.cv{
+  position:relative; aspect-ratio:1/1.08; background:#111014; color:var(--canvas); padding:clamp(22px,2.6vw,34px);
+  display:flex; flex-direction:column; justify-content:space-between;
+  box-shadow:0 2px 0 #000, 14px 22px 36px -14px rgba(20,18,23,.5), inset 0 0 0 6px #18161c;
+  transform:rotate(var(--r)); transform-origin:50% -20px;
+  transition:transform .8s cubic-bezier(.3,1.6,.4,1);
+}
+.cv:hover{transform:rotate(calc(var(--r) * -1))}
+.cv::before{ /* the nail */
+  content:""; position:absolute; top:-20px; left:50%; width:8px; height:8px; margin-left:-4px; border-radius:50%;
+  background:#8b8790; box-shadow:0 1px 2px rgba(0,0,0,.4);
+}
+.cv q{font-family:var(--f-display); font-weight:900; text-transform:uppercase; font-size:clamp(24px,2.4vw,34px); line-height:.98; quotes:none}
+.cv .who{display:flex; justify-content:space-between; color:rgba(255,141,30,.6)}
+.cv:nth-child(1){--r:-2deg}
+.cv:nth-child(2){--r:1.5deg; margin-top:40px; background:var(--canvas); color:#111014; box-shadow:0 2px 0 #b65e0c, 14px 22px 36px -14px rgba(20,18,23,.5), inset 0 0 0 6px #ff9a36}
+.cv:nth-child(2) .who{color:rgba(17,16,20,.6)}
+.cv:nth-child(3){--r:-1deg; margin-top:10px}
+@media (max-width:860px){
+  .hang{grid-template-columns:1fr; max-width:440px; margin:0 auto; gap:56px}
+  .cv:nth-child(n){margin-top:0; aspect-ratio:auto; min-height:300px}
+}
 
-  form{padding:0;}
-  .frow{display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-bottom:8px;}
-  @media(max-width:520px){ .frow{grid-template-columns:1fr;} }
-  .field{display:flex; flex-direction:column; gap:8px; margin-bottom:26px;}
-  .field label{font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted-w); font-weight:600;}
-  .field input, .field select, .field textarea{
-    background:transparent; border:none; border-bottom:1px solid var(--line-w); color:var(--navy);
-    padding:9px 2px; font-family:'Poppins',sans-serif; font-size:15px; border-radius:0;
-    transition:border-color .2s ease;
-  }
-  .field input:focus, .field select:focus, .field textarea:focus{ border-color:var(--navy); outline:none; }
-  .field textarea{resize:vertical; min-height:70px;}
-  .frow .field{margin-bottom:0;}
-  .submitrow{display:flex; align-items:center; gap:18px; margin-top:10px; flex-wrap:wrap;}
-  .submitrow .btn{padding:14px 30px; font-size:12px;}
-  .formnote{font-size:12.5px; color:var(--muted-w); line-height:1.6;}
-  .confirm{display:none; margin-top:22px; padding:16px 18px; border:1px solid var(--navy); background:var(--paper); color:var(--navy); font-size:14px; line-height:1.6;}
-  .confirm.show{display:block;}
-  .confirm b{color:var(--navy);}
+/* ---------- BOOKING: queue ticket ---------- */
+.book{padding:clamp(80px,11vw,140px) 0; position:relative; overflow:hidden}
+.book-grid{display:grid; grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr); gap:clamp(32px,5vw,80px); align-items:start}
+.book h2{font-size:clamp(56px,9vw,132px); margin-bottom:18px}
+.book .intro{color:var(--t-mid); max-width:460px; margin:0 0 44px}
+.step{margin-bottom:34px}
+.step > .mono{display:flex; gap:12px; color:var(--t-lo); margin-bottom:14px}
+.step > .mono b{color:var(--neon-hot); font-weight:500}
+.chips{display:flex; flex-wrap:wrap; gap:8px}
+.chip{
+  position:relative; padding:10px 16px; border-radius:12px; box-shadow:inset 0 0 0 1.5px var(--rule);
+  font-size:14px; color:var(--t-mid); transition:box-shadow .2s, color .2s, background .2s; text-align:left; line-height:1.25;
+}
+.chip:hover{box-shadow:inset 0 0 0 1.5px var(--t-mid); color:var(--t-hi)}
+.chip[aria-pressed="true"]{background:var(--neon); color:var(--ink); box-shadow:0 0 18px -2px var(--neon)}
+.chip:disabled{opacity:.28; cursor:not-allowed; text-decoration:line-through}
+.chip.day{min-width:72px; text-align:center}
+.chip.day b{display:block; font-family:var(--f-display); font-weight:800; font-size:26px; line-height:1; margin-top:2px}
+.chip.day small{font-family:var(--f-mono); font-size:9.5px; text-transform:uppercase; letter-spacing:.05em}
+.chip.time{font-family:var(--f-mono); font-size:12px; padding:9px 12px}
+.fields{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+.fields label{display:flex; flex-direction:column; gap:6px}
+.fields label.full{grid-column:1 / -1}
+.fields span{font-family:var(--f-mono); font-size:10px; text-transform:uppercase; letter-spacing:.05em; color:var(--t-lo)}
+.fields input, .fields textarea{
+  font:inherit; color:var(--t-hi); background:var(--ink-2); border:0; border-radius:12px; padding:14px 16px;
+  box-shadow:inset 0 0 0 1.5px var(--rule); transition:box-shadow .2s;
+}
+.fields input:focus, .fields textarea:focus{outline:none; box-shadow:inset 0 0 0 1.5px var(--neon), 0 0 0 4px var(--neon-dim)}
+.fields input::placeholder, .fields textarea::placeholder{color:var(--t-lo)}
+.fields textarea{min-height:84px; resize:vertical}
+@media (max-width:520px){ .fields{grid-template-columns:1fr} }
+.err{color:var(--neon-hot); font-size:13px; min-height:20px; margin-top:12px}
 
-  /* ---------- FOOTER ---------- */
-  footer{background:var(--navy); color:var(--white); padding:64px 0 30px;}
-  .foot-top{display:flex; justify-content:space-between; gap:40px; flex-wrap:wrap; padding-bottom:44px; border-bottom:1px solid var(--line-n);}
-  .foot-brand{display:flex; gap:12px; align-items:flex-start;}
-  .foot-brand img{height:40px; width:auto; margin-top:2px;}
-  .foot-brand-text .brand-name{color:var(--white); font-size:19px;}
-  .foot-brand-text .brand-name small{color:var(--muted-n);}
-  .foot-brand p{color:var(--muted-n); font-size:14px; margin-top:12px; max-width:280px; line-height:1.6;}
-  .foot-cols{display:flex; gap:64px; flex-wrap:wrap;}
-  .foot-col h4{font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold); margin-bottom:16px; font-weight:600;}
-  .foot-col a, .foot-col span{display:block; color:var(--muted-n); font-size:14px; margin-bottom:10px;}
-  .foot-col a:hover{color:var(--white);}
-  .foot-bottom{display:flex; justify-content:space-between; padding-top:22px; font-size:12px; color:var(--muted-n); flex-wrap:wrap; gap:10px;}
+.ticket{
+  position:sticky; top:96px; color:var(--ink-on-marble); background:var(--marble);
+  border-radius:18px; padding:28px 26px 24px;
+  -webkit-mask:radial-gradient(circle 13px at 0 63%, #0000 98%, #000) left / 51% 100% no-repeat,
+               radial-gradient(circle 13px at 100% 63%, #0000 98%, #000) right / 51% 100% no-repeat;
+          mask:radial-gradient(circle 13px at 0 63%, #0000 98%, #000) left / 51% 100% no-repeat,
+               radial-gradient(circle 13px at 100% 63%, #0000 98%, #000) right / 51% 100% no-repeat;
+  box-shadow:0 30px 80px -30px rgba(255,47,210,.5);
+}
+.ticket-top{display:flex; justify-content:space-between; align-items:flex-start; gap:12px}
+.ticket .sign-text{font-size:36px; line-height:.9; color:var(--ink-on-marble); text-shadow:none}
+.ticket .no{font-family:var(--f-display); font-weight:900; font-size:56px; line-height:.8; text-align:right}
+.ticket .no small{display:block; font-family:var(--f-mono); font-weight:400; font-size:9px; letter-spacing:.06em; color:var(--mid-on-marble); margin-bottom:6px}
+.t-rows{margin:22px 0 0; padding:0; list-style:none}
+.t-rows li{display:flex; justify-content:space-between; gap:16px; padding:9px 0; border-bottom:1px dashed var(--rule-on-marble); font-size:14px}
+.t-rows li .mono{color:var(--mid-on-marble); font-size:10px; padding-top:3px; flex:none}
+.t-rows li span:last-child{text-align:right; font-weight:600}
+.t-rows li .empty{color:var(--mid-on-marble); font-weight:400}
+.t-tear{border-top:2px dashed var(--rule-on-marble); margin:24px -26px 18px}
+.t-total{display:flex; justify-content:space-between; align-items:baseline}
+.t-total b{font-family:var(--f-display); font-weight:900; font-size:46px; line-height:1}
+.ticket .pill{width:100%; justify-content:center; margin-top:18px; height:52px; font-size:19px}
+.ticket .note{font-size:12px; color:var(--mid-on-marble); text-align:center; margin:10px 0 0}
+.barcode{height:34px; margin-top:16px; background:repeating-linear-gradient(90deg, var(--ink-on-marble) 0 2px, transparent 2px 4px, var(--ink-on-marble) 4px 5px, transparent 5px 9px, var(--ink-on-marble) 9px 12px, transparent 12px 13px); opacity:.85}
+@media (max-width:960px){ .book-grid{grid-template-columns:1fr} .ticket{position:relative; top:0} }
 
-  .reveal{opacity:0; transform:translateY(26px) scale(0.985); transition:opacity .9s var(--ease), transform .9s var(--ease);}
-  .reveal.in{opacity:1; transform:translateY(0) scale(1);}
+/* ---------- FOOTER ---------- */
+.foot{background:#050407; padding:clamp(64px,8vw,100px) 0 28px; position:relative; overflow:hidden}
+.foot-big{font-size:clamp(84px,19vw,300px); line-height:.78; text-align:center; margin:0 0 clamp(40px,6vw,72px); white-space:nowrap}
+.foot-grid{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:28px; padding-top:28px; border-top:1px solid var(--rule)}
+.foot-grid h4{margin:0 0 14px; font-family:var(--f-mono); font-weight:500; font-size:10px; letter-spacing:.06em; text-transform:uppercase; color:var(--t-lo)}
+.foot-grid p, .foot-grid a{display:block; margin:0 0 6px; color:var(--t-mid); font-size:14px}
+.foot-grid a:hover{color:var(--neon-hot)}
+.hours div{display:flex; justify-content:space-between; gap:10px; font-size:14px; color:var(--t-mid); padding:3px 0}
+.hours div.today{color:var(--t-hi)}
+.hours div.today span:first-child::before{content:"● "; color:var(--neon)}
+.foot-legal{display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-top:48px; color:var(--t-lo)}
+@media (max-width:820px){ .foot-grid{grid-template-columns:1fr 1fr} }
 
-  /* Staggered children — parent gets .stagger, JS assigns --i per child */
-  .stagger > *{
-    opacity:0; transform:translateY(20px);
-    transition:opacity .7s var(--ease), transform .7s var(--ease);
-    transition-delay:calc(var(--i, 0) * 70ms);
-  }
-  .stagger.in > *{opacity:1; transform:translateY(0);}
+/* ---------- motion: in-view ---------- */
+[data-in]{transition:clip-path 1.1s var(--snap), opacity .6s}
+[data-in="wipe"]{clip-path:inset(0 0 100% 0)}
+.seen > [data-in="wipe"], .seen [data-in="wipe"]{clip-path:inset(-10% 0 -10% 0)}
+.wall .frame{opacity:0; transform:translateX(40px); transition:opacity .7s, transform .9s var(--snap); transition-delay:calc(var(--n) * 60ms)}
+.wall.seen .frame{opacity:1; transform:none}
 
-  /* Hero load-in sequence */
-  .hero-seq{opacity:0; transform:translateY(22px); transition:opacity .9s var(--ease), transform .9s var(--ease); transition-delay:calc(var(--i,0) * 110ms);}
-  body.loaded .hero-seq{opacity:1; transform:translateY(0);}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001ms !important; animation-delay:0s !important; transition-duration:.001ms !important; transition-delay:0s !important}
+  .hero h1 .row > span{transform:none}
+  [data-in="wipe"]{clip-path:none}
+}
 </style>
 </head>
 <body>
 
-<header>
-  <nav class="wrap">
-    <a href="#top" class="brand">
-      <img src="./mark-navy.png" alt="">
-      <span class="brand-name">Cutting Edge<small>&amp; Games Ltd.</small></span>
+<!-- shared clip shape: the shop's round mirror, cut by the wall on its left -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <clipPath id="mirrorClip" clipPathUnits="objectBoundingBox">
+      <path transform="scale(.011765 .01)" d="M0 14.3 A50 50 0 1 1 0 85.7 Z"/>
+    </clipPath>
+  </defs>
+</svg>
+
+<header class="bar" id="bar">
+  <div class="shell">
+    <a href="#top" class="logo" aria-label="Cutting Edge and Games, home">
+      <span class="sign-text">Cutting Edge</span>
+      <span class="mono">&amp; Games Ltd.</span>
     </a>
-    <div class="navlinks">
-      <a href="#services">Services</a>
-      <a href="#lounge">PS5 Lounge</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#booking">Book</a>
+    <nav class="links" aria-label="Primary">
+      <a href="#menu">Menu</a>
+      <a href="#lounge">Lounge</a>
+      <a href="#wall">Work</a>
       <a href="#visit">Visit</a>
-    </div>
-    <a href="#booking" class="btn navcta">Book Now</a>
-    <button class="menutoggle" aria-label="Menu" onclick="document.getElementById('mnav').classList.toggle('show')">☰</button>
-  </nav>
-  <div id="mnav" class="wrap">
-    <a href="#services">Services</a>
-    <a href="#lounge">PS5 Lounge</a>
-    <a href="#gallery">Gallery</a>
-    <a href="#booking">Book</a>
-    <a href="#visit">Visit</a>
+    </nav>
+    <a href="#book" class="pill">Get in the chair</a>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="drawer"><span></span><span></span></button>
   </div>
+  <nav class="drawer" id="drawer" aria-label="Mobile">
+    <a href="#menu">Menu</a>
+    <a href="#lounge">Lounge</a>
+    <a href="#wall">Work</a>
+    <a href="#book">Book</a>
+    <a href="#visit">Visit</a>
+  </nav>
 </header>
 
-<div id="top"></div>
+<main id="top">
+
+<!-- ===================== HERO ===================== -->
 <section class="hero">
-  <img class="hero-mark" src="./mark-white.png" alt="">
-  <div class="wrap hero-grid">
-    <div>
-      <div class="eyebrow hero-seq" style="--i:0">Barbershop &amp; PS5 Lounge — Benin City</div>
-      <h1 class="hero-seq" style="--i:1">Precision<br>is the <span class="display-italic">point.</span></h1>
-      <p class="hero-sub hero-seq" style="--i:2">Where a clean fade meets an even cleaner wait. Settle into a PS5 station while your barber gets your chair ready — right in the heart of Benin City.</p>
-      <div class="hero-ctas hero-seq" style="--i:3">
-        <a href="#booking" class="btn gold">Book a Chair</a>
-        <a href="#services" class="btn on-navy ghost">See the Menu</a>
-      </div>
-      <div class="hero-stats hero-seq" style="--i:4">
-        <div class="hero-stat"><div class="num" data-count="6">0</div><div class="lbl">Chairs on deck</div></div>
-        <div class="hero-stat"><div class="num" data-count="4">0</div><div class="lbl">PS5 stations</div></div>
-        <div class="hero-stat"><div class="num" data-count="7d">0</div><div class="lbl">Open weekly</div></div>
-      </div>
-    </div>
-    <div class="hero-photo hero-seq" style="--i:1.4">
-      <div class="photo" id="heroPhotoInner">
-        <video autoplay muted loop playsinline preload="auto" poster="./hero-poster.jpg" aria-label="Fresh fade being cut in the shop">
-          <source src="./hero-cut.mp4" type="video/mp4">
-        </video>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="cut cut--nw"><div class="base"></div><div class="slice"></div>
-  <div class="cut-badge"><svg viewBox="0 0 24 24" fill="none" stroke="#04004d" stroke-width="1.6"><circle cx="6" cy="6" r="2.6"/><circle cx="6" cy="18" r="2.6"/><line x1="20" y1="4" x2="8.2" y2="15.8"/><line x1="8.2" y1="8.2" x2="20" y2="20"/></svg></div>
-</div>
-
-<div class="marquee">
-  <div class="marquee-track">
-    <span>Skin Fades</span><span>Beard Sculpting</span><span>Braids &amp; Twists</span><span>Kids Cuts</span><span>Hair Design</span><span>Hot Towel Shave</span><span>PS5 Lounge</span><span>Benin City</span>
-    <span>Skin Fades</span><span>Beard Sculpting</span><span>Braids &amp; Twists</span><span>Kids Cuts</span><span>Hair Design</span><span>Hot Towel Shave</span><span>PS5 Lounge</span><span>Benin City</span>
-  </div>
-</div>
-
-<!-- ===================== SERVICES ===================== -->
-<section id="services" class="band-white">
-  <div class="wrap">
-    <div class="sec-head reveal">
+  <div class="shell">
+    <div class="hero-grid">
       <div>
-        <div class="eyebrow">The Menu</div>
-        <h2>Every cut,<br>dialed in.</h2>
-      </div>
-      <p>Sharp lines, clean fades, and beard work that holds its shape. Every service ends with a mirror check you'll actually nod at.</p>
-    </div>
-
-    <div class="menu-list reveal stagger">
-      <div class="menu-row">
-        <span class="mname">Skin Fade</span>
-        <span class="mleader"></span>
-        <span class="mprice">₦8,000</span>
-        <span class="mdesc">Razor-sharp taper from skin to crown, shaped to your hairline and finished with a liner touch-up. <span class="mtime">45 min</span></span>
-      </div>
-      <div class="menu-row">
-        <span class="mname">Beard Sculpt</span>
-        <span class="mleader"></span>
-        <span class="mprice">₦4,500</span>
-        <span class="mdesc">Line-up, shape and hot towel finish, built around your jaw, not a template. <span class="mtime">25 min</span></span>
-      </div>
-      <div class="menu-row">
-        <span class="mname">The Full Groom</span>
-        <span class="mleader"></span>
-        <span class="mprice">₦13,500</span>
-        <span class="mdesc">Fade, beard sculpt, hot towel shave and wash — the complete reset. <span class="mtime">75 min</span></span>
-      </div>
-      <div class="menu-row">
-        <span class="mname">Braids &amp; Twists</span>
-        <span class="mleader"></span>
-        <span class="mprice">from ₦10,000</span>
-        <span class="mdesc">Cornrows, box braids or twist styles with a clean part and tapered edges. <span class="mtime">90+ min</span></span>
-      </div>
-      <div class="menu-row">
-        <span class="mname">Kids Cut</span>
-        <span class="mleader"></span>
-        <span class="mprice">₦5,000</span>
-        <span class="mdesc">Patient hands, quick fades — ages 12 &amp; under. <span class="mtime">30 min</span></span>
-      </div>
-      <div class="menu-row">
-        <span class="mname">Hair Design</span>
-        <span class="mleader"></span>
-        <span class="mprice">from ₦3,000</span>
-        <span class="mdesc">Custom part lines, freehand designs or a fresh colour to finish your look. <span class="mtime">15+ min</span></span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="cut cut--wn"><div class="base"></div><div class="slice"></div>
-  <div class="cut-badge"><svg viewBox="0 0 24 24" fill="none" stroke="#04004d" stroke-width="1.6"><circle cx="6" cy="6" r="2.6"/><circle cx="6" cy="18" r="2.6"/><line x1="20" y1="4" x2="8.2" y2="15.8"/><line x1="8.2" y1="8.2" x2="20" y2="20"/></svg></div>
-</div>
-
-<!-- ===================== PS5 LOUNGE ===================== -->
-<section id="lounge" class="band-navy">
-  <div class="wrap">
-    <div class="games-grid">
-      <div class="reveal">
-        <div class="eyebrow">The Lounge</div>
-        <h2>Your wait just became<br>your favourite part.</h2>
-        <p class="games-copy">No dead time in the waiting chair. Drop into a match on PS5 while your barber gets your station ready — controllers are free the moment you walk in.</p>
-        <div class="stat-strip stagger">
-          <div class="stat-cell"><div class="n" data-count="4">0</div><div class="l">PS5 Stations</div></div>
-          <div class="stat-cell"><div class="n" data-count="40+">0</div><div class="l">Titles Loaded</div></div>
-          <div class="stat-cell"><div class="n">Free</div><div class="l">While You Wait</div></div>
-          <div class="stat-cell"><div class="n" data-count="2×">0</div><div class="l">Controllers / Station</div></div>
+        <h1 class="display" aria-label="Look good. Feel good.">
+          <span class="row"><span>Look</span></span>
+          <span class="row"><span>good.</span></span>
+          <span class="row"><span class="c">Feel</span></span>
+          <span class="row"><span class="c">good.</span></span>
+        </h1>
+        <div class="hero-meta">
+          <p>Fades, beards and braids under the neon in Benin City — and a PS5 in your hands until it's your turn.</p>
+          <div class="hero-ctas">
+            <a href="#book" class="pill">Book a chair</a>
+            <a href="#menu" class="pill line">Prices</a>
+          </div>
         </div>
       </div>
-      <div class="controller-frame reveal">
-        <svg viewBox="0 0 200 130" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M55 30 H145 C175 30 190 55 185 82 C181 104 163 108 150 96 L138 84 H62 L50 96 C37 108 19 104 15 82 C10 55 25 30 55 30 Z" stroke="#ffffff" stroke-width="2.4"/>
-          <line x1="40" y1="58" x2="40" y2="76" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round"/>
-          <line x1="31" y1="67" x2="49" y2="67" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round"/>
-          <circle cx="150" cy="58" r="4.2" stroke="#ffffff" stroke-width="2"/>
-          <circle cx="164" cy="72" r="4.2" stroke="#ffffff" stroke-width="2"/>
-          <circle cx="136" cy="72" r="4.2" stroke="#ffffff" stroke-width="2"/>
-          <circle cx="150" cy="86" r="4.2" stroke="#ffffff" stroke-width="2"/>
-          <circle cx="80" cy="52" r="9" stroke="#ffffff" stroke-width="2"/>
-          <circle cx="118" cy="52" r="9" stroke="#ffffff" stroke-width="2"/>
+
+      <div class="mirror">
+        <div class="mirror-glass">
+          <video autoplay muted loop playsinline preload="metadata" poster="./hero-poster.jpg" aria-label="A barber shaping a fresh cut in the shop">
+            <source src="./hero-cut.mp4" type="video/mp4">
+          </video>
+        </div>
+        <svg class="mirror-led" viewBox="0 0 85 100" preserveAspectRatio="none" aria-hidden="true">
+          <path pathLength="1" d="M0 14.3 A50 50 0 1 1 0 85.7"/>
         </svg>
+        <span class="sign-text flicker" aria-hidden="true">Cutting<br>&nbsp;&nbsp;Edge</span>
+        <span class="mirror-tag mono">Chair 01 · Live from the shop</span>
       </div>
+    </div>
+
+    <div class="hero-foot mono">
+      <span class="status" id="status"><i></i><span id="statusText">Checking hours…</span></span>
+      <span>Benin City · Edo</span>
+      <span>Cuts · Beards · Braids · PS5</span>
     </div>
   </div>
 </section>
 
-<div class="cut cut--nw"><div class="base"></div><div class="slice"></div>
-  <div class="cut-badge"><svg viewBox="0 0 24 24" fill="none" stroke="#04004d" stroke-width="1.6"><circle cx="6" cy="6" r="2.6"/><circle cx="6" cy="18" r="2.6"/><line x1="20" y1="4" x2="8.2" y2="15.8"/><line x1="8.2" y1="8.2" x2="20" y2="20"/></svg></div>
-</div>
-
-<!-- ===================== GALLERY ===================== -->
-<section id="gallery" class="band-white">
-  <div class="wrap">
-    <div class="sec-head reveal">
+<!-- ===================== MENU / PRICE BOARD ===================== -->
+<section class="board" id="menu" aria-labelledby="menuTitle">
+  <div class="shell">
+    <div class="board-head">
       <div>
-        <div class="eyebrow">Fresh Off The Chair</div>
-        <h2>Recent work.</h2>
+        <span class="mono">The board — tap to add</span>
+        <h2 class="display" id="menuTitle" data-in="wipe">What's<br>on the chair</h2>
       </div>
-      <p>Every fade below walked out of this shop this month. Tag us in yours.</p>
+      <p>Bars show how long you're in the seat. Pick one or stack a few — your ticket below fills itself in.</p>
     </div>
-  </div>
-  <div class="gallery-grid stagger">
-    <figure><div class="photo"><img src="./cut-01.jpg" alt="Client with a textured curl top and low taper fade"></div><span class="wipe"></span><figcaption class="cap">Curl Top / Low Taper</figcaption></figure>
-    <figure><div class="photo"><img src="./cut-02.jpg" alt="Barber shaping a sharp part line into a curly fade"></div><span class="wipe"></span><figcaption class="cap">Sharp Part Line</figcaption></figure>
-    <figure><div class="photo"><img src="./cut-07.jpg" alt="Drop fade with a shape-up around the beard"></div><span class="wipe"></span><figcaption class="cap">Drop Fade + Beard</figcaption></figure>
-    <figure><div class="photo"><img src="./cut-03.jpg" alt="Fresh afro fade with tight sides"></div><span class="wipe"></span><figcaption class="cap">Afro Fade</figcaption></figure>
-    <figure><div class="photo"><img src="./cut-05.jpg" alt="High top fade being blow dried"></div><span class="wipe"></span><figcaption class="cap">High Top Finish</figcaption></figure>
-    <figure><div class="photo"><img src="./cut-06.jpg" alt="Buzz cut with full beard lineup"></div><span class="wipe"></span><figcaption class="cap">Buzz + Beard Line</figcaption></figure>
-    <figure><div class="photo"><img src="./cut-04.jpg" alt="Boxy fringe fade"></div><span class="wipe"></span><figcaption class="cap">Boxy Fringe</figcaption></figure>
-    <figure><div class="photo"><img src="./cut-08.jpg" alt="Twisted braids with a burst fade"></div><span class="wipe"></span><figcaption class="cap">Braids / Burst Fade</figcaption></figure>
+
+    <ul class="svc" id="svc" role="group" aria-label="Services"></ul>
+
+    <div class="tally" id="tally" aria-live="polite">
+      <div><b id="tallyMain">0 picked</b> <span class="mono" id="tallySub"></span></div>
+      <a href="#book" class="pill">To ticket →</a>
+    </div>
   </div>
 </section>
 
-<div class="cut cut--wn"><div class="base"></div><div class="slice"></div>
-  <div class="cut-badge"><svg viewBox="0 0 24 24" fill="none" stroke="#04004d" stroke-width="1.6"><circle cx="6" cy="6" r="2.6"/><circle cx="6" cy="18" r="2.6"/><line x1="20" y1="4" x2="8.2" y2="15.8"/><line x1="8.2" y1="8.2" x2="20" y2="20"/></svg></div>
-</div>
+<!-- ===================== LOUNGE ===================== -->
+<section class="lounge" id="lounge" aria-labelledby="loungeTitle">
+  <div class="shell lounge-grid">
+    <div>
+      <span class="mono" style="color:var(--t-lo)">The lounge</span>
+      <h2 class="display" id="loungeTitle">The wait<span class="neon-text">is the game.</span></h2>
+      <p class="lede">Nobody here scrolls their phone in a plastic chair. Grab a controller the moment you walk in — your barber calls you when the seat's warm.</p>
+      <ul class="specs">
+        <li><b>4</b><span class="mono">PS5 stations</span></li>
+        <li><b>40+</b><span class="mono">Titles loaded</span></li>
+        <li><b>₦0</b><span class="mono">While you wait</span></li>
+        <li><b>2×</b><span class="mono">Controllers each</span></li>
+      </ul>
+    </div>
+    <div class="stations" aria-hidden="true">
+      <div class="screen"><div class="mono"><span>Station</span><span>P1 · P2</span></div><span class="num">01</span></div>
+      <div class="screen"><div class="mono"><span>Station</span><span>P1 · P2</span></div><span class="num">02</span></div>
+      <div class="screen"><div class="mono"><span>Station</span><span>P1 · P2</span></div><span class="num">03</span></div>
+      <div class="screen"><div class="mono"><span>Station</span><span>P1 · P2</span></div><span class="num">04</span></div>
+    </div>
+  </div>
+</section>
 
-<!-- ===================== TESTIMONIALS ===================== -->
-<section class="band-navy">
-  <div class="wrap">
-    <div class="sec-head reveal">
+<!-- ===================== MIRROR WALL ===================== -->
+<section class="wall" id="wall" aria-labelledby="wallTitle">
+  <div class="shell wall-head">
+    <div>
+      <span class="mono" style="color:var(--t-lo)">Off the chair, this month</span>
+      <h2 class="display" id="wallTitle" data-in="wipe">The mirror<br>wall</h2>
+    </div>
+    <div class="wall-ctrl">
+      <span class="count" aria-live="polite"><span id="wallNow">01</span><span> / 08</span></span>
+      <button class="round" id="wallPrev" aria-label="Previous cut"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <button class="round" id="wallNext" aria-label="Next cut"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5l7 7-7 7"/></svg></button>
+    </div>
+  </div>
+  <div class="strip" id="strip" tabindex="0" aria-label="Recent haircuts, scroll sideways">
+    <figure class="frame" style="--n:0"><div class="arch"><img src="./cut-01.jpg" alt="Textured curl top with a low taper fade" loading="lazy" draggable="false"></div><figcaption><b>Curl top</b><span class="mono">Low taper</span></figcaption></figure>
+    <figure class="frame" style="--n:1"><div class="arch"><img src="./cut-02.jpg" alt="Barber holding a curly top with a sharp squared hairline" loading="lazy" draggable="false"></div><figcaption><b>Hard line</b><span class="mono">Curl sponge</span></figcaption></figure>
+    <figure class="frame" style="--n:2"><div class="arch"><img src="./cut-07.jpg" alt="Drop fade connected to a shaped beard" loading="lazy" draggable="false"></div><figcaption><b>Drop fade</b><span class="mono">+ Beard</span></figcaption></figure>
+    <figure class="frame" style="--n:3"><div class="arch"><img src="./cut-03.jpg" alt="Afro with tight faded sides" loading="lazy" draggable="false"></div><figcaption><b>Afro fade</b><span class="mono">Tight sides</span></figcaption></figure>
+    <figure class="frame" style="--n:4"><div class="arch"><img src="./cut-05.jpg" alt="High top being blow-dried into shape" loading="lazy" draggable="false"></div><figcaption><b>High top</b><span class="mono">Blow-out</span></figcaption></figure>
+    <figure class="frame" style="--n:5"><div class="arch"><img src="./cut-06.jpg" alt="Buzz cut with a full lined beard" loading="lazy" draggable="false"></div><figcaption><b>Buzz</b><span class="mono">Beard line</span></figcaption></figure>
+    <figure class="frame" style="--n:6"><div class="arch"><img src="./cut-04.jpg" alt="Boxy fringe over a fade" loading="lazy" draggable="false"></div><figcaption><b>Boxy fringe</b><span class="mono">Mid fade</span></figcaption></figure>
+    <figure class="frame" style="--n:7"><div class="arch"><img src="./cut-08.jpg" alt="Twists over a burst fade" loading="lazy" draggable="false"></div><figcaption><b>Twists</b><span class="mono">Burst fade</span></figcaption></figure>
+  </div>
+</section>
+
+<!-- ===================== CANVAS WALL ===================== -->
+<section class="canvases" aria-labelledby="revTitle">
+  <div class="shell">
+    <div class="board-head">
       <div>
-        <div class="eyebrow">Word Around The Chair</div>
-        <h2>What clients say.</h2>
+        <span class="mono">Hung on the wall</span>
+        <h2 class="display" id="revTitle" data-in="wipe">Said in<br>the chair</h2>
       </div>
+      <p>What regulars told us between the clippers and the controllers.</p>
     </div>
-    <div class="test-grid reveal stagger">
-      <div class="test">
-        <div class="stars">★★★★★</div>
-        <p>Been chasing a barber who gets my line right for years. Found it here in Benin. My son's on PS5 while I get faded — we're both happy.</p>
-        <div class="who">— Tunde A.</div>
-      </div>
-      <div class="test">
-        <div class="stars">★★★★★</div>
-        <p>The Full Groom is worth every naira. Hot towel finish alone brings me back weekly.</p>
-        <div class="who">— Chidi O.</div>
-      </div>
-      <div class="test">
-        <div class="stars">★★★★★</div>
-        <p>Booked on WhatsApp, was seated on time, and still had a match in on PS5 before my name was called.</p>
-        <div class="who">— Emeka N.</div>
-      </div>
+    <div class="hang">
+      <figure class="cv" style="margin:0"><q>Finally a barber who gets my line right. My son's on PS5 while I get faded.</q><figcaption class="who mono"><span>Tunde A.</span><span>Skin fade</span></figcaption></figure>
+      <figure class="cv" style="margin:0"><q>The Full Groom is worth every naira. Hot towel alone brings me back weekly.</q><figcaption class="who mono"><span>Chidi O.</span><span>Full groom</span></figcaption></figure>
+      <figure class="cv" style="margin:0"><q>Booked on WhatsApp, seated on time, still got a match in first.</q><figcaption class="who mono"><span>Emeka N.</span><span>Beard sculpt</span></figcaption></figure>
     </div>
   </div>
 </section>
-
-<div class="cut cut--nw"><div class="base"></div><div class="slice"></div>
-  <div class="cut-badge"><svg viewBox="0 0 24 24" fill="none" stroke="#04004d" stroke-width="1.6"><circle cx="6" cy="6" r="2.6"/><circle cx="6" cy="18" r="2.6"/><line x1="20" y1="4" x2="8.2" y2="15.8"/><line x1="8.2" y1="8.2" x2="20" y2="20"/></svg></div>
-</div>
 
 <!-- ===================== BOOKING ===================== -->
-<section id="booking" class="band-white">
-  <div class="wrap">
-    <div class="booking-grid">
-      <div class="booking-info reveal">
-        <div class="eyebrow">Book A Chair</div>
-        <h2>Lock in<br>your slot.</h2>
-        <p>Fill in your details and we'll send your booking straight to our WhatsApp — a barber confirms your time personally, usually within minutes.</p>
+<section class="book" id="book" aria-labelledby="bookTitle">
+  <div class="shell book-grid">
+    <form id="form" novalidate>
+      <span class="mono" style="color:var(--t-lo)">Take a ticket</span>
+      <h2 class="display" id="bookTitle">Get in<br>the <span class="neon-text">chair.</span></h2>
+      <p class="intro">Four quick picks. Your ticket goes straight to our WhatsApp and a barber confirms the slot — usually within minutes.</p>
 
-        <div id="visit" class="hours">
-          <div class="hours-row"><span class="d">Mon – Fri</span><span class="t">9:00 AM – 9:00 PM</span></div>
-          <div class="hours-row"><span class="d">Saturday</span><span class="t">8:00 AM – 10:00 PM</span></div>
-          <div class="hours-row"><span class="d">Sunday</span><span class="t">11:00 AM – 7:00 PM</span></div>
-        </div>
-        <div class="contactline">
-          <span><b>Address —</b> Update with your exact address, Benin City, Edo State.</span>
-          <span><b>Phone / WhatsApp —</b> Update with your business number.</span>
+      <div class="step">
+        <div class="mono"><b>01</b> What are we doing</div>
+        <div class="chips" id="pickSvc"></div>
+      </div>
+      <div class="step">
+        <div class="mono"><b>02</b> Which day</div>
+        <div class="chips" id="pickDay"></div>
+      </div>
+      <div class="step">
+        <div class="mono"><b>03</b> What time</div>
+        <div class="chips" id="pickTime"></div>
+      </div>
+      <div class="step">
+        <div class="mono"><b>04</b> Who's cutting</div>
+        <div class="chips" id="pickBarber"></div>
+      </div>
+      <div class="step">
+        <div class="mono"><b>05</b> You</div>
+        <div class="fields">
+          <label><span>Name</span><input id="fname" autocomplete="name" placeholder="Daniel Okafor" required></label>
+          <label><span>Phone</span><input id="fphone" type="tel" autocomplete="tel" placeholder="0803 000 0000" required></label>
+          <label class="full"><span>Notes for your barber (optional)</span><textarea id="fnotes" placeholder="Reference photo, sensitive skin, bringing the kids…"></textarea></label>
         </div>
       </div>
+    </form>
 
-      <form id="bookingForm" class="reveal" novalidate>
-        <div class="frow">
-          <div class="field">
-            <label for="fname">Full name</label>
-            <input type="text" id="fname" name="fname" placeholder="e.g. Daniel Okafor" required>
-          </div>
-          <div class="field">
-            <label for="fphone">Phone number</label>
-            <input type="tel" id="fphone" name="fphone" placeholder="e.g. 0803 000 0000" required>
-          </div>
-        </div>
-
-        <div class="frow">
-          <div class="field">
-            <label for="fservice">Service</label>
-            <select id="fservice" name="fservice" required>
-              <option value="" disabled selected>Choose a service</option>
-              <option>Skin Fade — ₦8,000</option>
-              <option>Beard Sculpt — ₦4,500</option>
-              <option>The Full Groom — ₦13,500</option>
-              <option>Braids &amp; Twists — from ₦10,000</option>
-              <option>Kids Cut — ₦5,000</option>
-              <option>Hair Design — from ₦3,000</option>
-            </select>
-          </div>
-          <div class="field">
-            <label for="fbarber">Preferred barber</label>
-            <select id="fbarber" name="fbarber">
-              <option value="No preference">No preference</option>
-              <option>Emeka</option>
-              <option>Kelvin</option>
-              <option>Bayo</option>
-              <option>Tobi</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="frow">
-          <div class="field">
-            <label for="fdate">Preferred date</label>
-            <input type="date" id="fdate" name="fdate" required>
-          </div>
-          <div class="field">
-            <label for="ftime">Preferred time</label>
-            <input type="time" id="ftime" name="ftime" required>
-          </div>
-        </div>
-
-        <div class="field">
-          <label for="fnotes">Notes (optional)</label>
-          <textarea id="fnotes" name="fnotes" placeholder="Anything your barber should know — style reference, allergies, kids in tow..."></textarea>
-        </div>
-
-        <div class="submitrow">
-          <button type="submit" class="btn gold">Send Booking Request</button>
-          <span class="formnote">Sends via WhatsApp — no account needed.</span>
-        </div>
-
-        <div class="confirm" id="confirmBox">
-          <b>Almost there —</b> your WhatsApp is opening with your booking details filled in. Just hit send and a barber will confirm your slot.
-        </div>
-      </form>
-    </div>
+    <aside class="ticket" aria-label="Your booking ticket">
+      <div class="ticket-top">
+        <span class="sign-text">Cutting<br>Edge</span>
+        <div class="no"><small>Ticket no.</small><span id="tNo">—</span></div>
+      </div>
+      <ul class="t-rows">
+        <li><span class="mono">Service</span><span id="tSvc"><span class="empty">Pick from the board</span></span></li>
+        <li><span class="mono">Day</span><span id="tDay"><span class="empty">—</span></span></li>
+        <li><span class="mono">Time</span><span id="tTime"><span class="empty">—</span></span></li>
+        <li><span class="mono">Barber</span><span id="tBarber">Whoever's free</span></li>
+        <li><span class="mono">In chair</span><span id="tDur"><span class="empty">—</span></span></li>
+      </ul>
+      <div class="t-tear"></div>
+      <div class="t-total"><span class="mono">Est. total</span><b id="tTotal">₦0</b></div>
+      <button type="submit" form="form" class="pill" id="send">Send to WhatsApp</button>
+      <p class="err" id="err" role="alert"></p>
+      <p class="note">No account. Pay in the shop.</p>
+      <div class="barcode" aria-hidden="true"></div>
+    </aside>
   </div>
 </section>
 
-<footer>
-  <div class="wrap">
-    <div class="foot-top">
-      <div class="foot-brand">
-        <img src="./mark-white.png" alt="">
-        <div class="foot-brand-text">
-          <div class="brand-name">Cutting Edge<small>&amp; Games Ltd.</small></div>
-          <p>A premium barbershop and PS5 game lounge in the heart of Benin City. Precision cuts, elevated waits.</p>
-        </div>
+</main>
+
+<footer class="foot" id="visit">
+  <div class="shell">
+    <p class="foot-big sign-text" aria-hidden="true">Cutting Edge</p>
+    <div class="foot-grid">
+      <div>
+        <h4>Find us</h4>
+        <p>Update with street address</p>
+        <p>Benin City, Edo State</p>
       </div>
-      <div class="foot-cols">
-        <div class="foot-col">
-          <h4>Shop</h4>
-          <a href="#services">Services</a>
-          <a href="#lounge">PS5 Lounge</a>
-          <a href="#gallery">Gallery</a>
-          <a href="#booking">Book a Chair</a>
-        </div>
-        <div class="foot-col">
-          <h4>Contact</h4>
-          <span>Update with address</span>
-          <span>Update with phone</span>
-          <span>Update with email</span>
-        </div>
-        <div class="foot-col">
-          <h4>Follow</h4>
-          <a href="#">Instagram</a>
-          <a href="#">TikTok</a>
-          <a href="#">WhatsApp</a>
-        </div>
+      <div class="hours" id="hours">
+        <h4>Hours (WAT)</h4>
+      </div>
+      <div>
+        <h4>Talk to us</h4>
+        <a href="#book">WhatsApp booking</a>
+        <p>Update with phone</p>
+      </div>
+      <div>
+        <h4>Follow</h4>
+        <a href="#">Instagram</a>
+        <a href="#">TikTok</a>
       </div>
     </div>
-    <div class="foot-bottom">
-      <span>© 2026 Cutting Edge &amp; Games Ltd. All rights reserved.</span>
-      <span>BENIN CITY, NIGERIA</span>
+    <div class="foot-legal mono">
+      <span>© 2026 Cutting Edge &amp; Games Ltd.</span>
+      <span>Look good · Feel good</span>
     </div>
   </div>
 </footer>
 
 <script>
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+(() => {
+  const WHATSAPP_NUMBER = "2348000000000"; // TODO: shop's real WhatsApp number, international format, no + or spaces
+  const BARBERS = ["Emeka", "Kelvin", "Bayo", "Tobi"];
+  const SERVICES = [
+    {id:"fade",   name:"Skin Fade",       price:8000,  from:false, min:45, desc:"Skin to crown, shaped to your hairline, liner finish."},
+    {id:"beard",  name:"Beard Sculpt",    price:4500,  from:false, min:25, desc:"Line-up and shape built around your jaw. Hot towel to close."},
+    {id:"groom",  name:"The Full Groom",  price:13500, from:false, min:75, desc:"Fade, beard, hot-towel shave and wash. The full reset."},
+    {id:"braids", name:"Braids & Twists", price:10000, from:true,  min:90, desc:"Cornrows, box braids or twists with clean parts and tapered edges."},
+    {id:"kids",   name:"Kids Cut",        price:5000,  from:false, min:30, desc:"Patient hands, quick fades. Twelve and under."},
+    {id:"design", name:"Hair Design",     price:3000,  from:true,  min:15, desc:"Part lines, freehand art or a colour to finish."}
+  ];
+  // Hours by JS weekday (0 = Sun), in 24h WAT
+  const HOURS = {0:[11,19], 1:[9,21], 2:[9,21], 3:[9,21], 4:[9,21], 5:[9,21], 6:[8,22]};
+  const DAYN = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  // Assign stagger index to grouped children
-  document.querySelectorAll('.stagger').forEach(group=>{
-    Array.from(group.children).forEach((child,i)=> child.style.setProperty('--i', i));
-  });
+  const $ = s => document.querySelector(s);
+  const naira = n => "₦" + n.toLocaleString("en-NG");
+  const state = {svc:new Set(), day:null, time:null, barber:null};
 
-  // Count-up animation for stat numbers
-  function animateCount(el){
-    const raw = el.getAttribute('data-count');
-    if(!raw) return;
-    const match = raw.match(/^(\d+)(.*)$/);
-    if(!match){ el.textContent = raw; return; }
-    const target = parseInt(match[1], 10);
-    const suffix = match[2] || '';
-    if(reduceMotion){ el.textContent = raw; return; }
-    const duration = 1100;
-    const start = performance.now();
-    function tick(now){
-      const p = Math.min(1, (now - start) / duration);
-      const eased = 1 - Math.pow(1 - p, 4); // easeOutQuart
-      el.textContent = Math.round(target * eased) + suffix;
-      if(p < 1) requestAnimationFrame(tick);
-      else el.textContent = raw;
-    }
-    requestAnimationFrame(tick);
+  /* ---------- Lagos clock (works wherever the visitor is) ---------- */
+  function lagosNow(){
+    const p = new Intl.DateTimeFormat("en-GB",{timeZone:"Africa/Lagos", year:"numeric", month:"2-digit", day:"2-digit", hour:"2-digit", minute:"2-digit", hour12:false})
+      .formatToParts(new Date()).reduce((a,x)=>(a[x.type]=x.value,a),{});
+    const d = new Date(Date.UTC(+p.year, +p.month-1, +p.day));
+    return {date:d, dow:d.getUTCDay(), mins:(+p.hour % 24)*60 + (+p.minute)};
   }
+  const fmt12 = h => { const hh = Math.floor(h), m = Math.round((h-hh)*60); const ap = hh>=12?"pm":"am"; const h12 = ((hh+11)%12)+1; return h12 + (m?":"+String(m).padStart(2,"0"):"") + ap; };
 
-  const countEls = document.querySelectorAll('[data-count]');
-
-  // Scroll reveal (+ triggers count-up for stat numbers inside)
-  const revealEls = document.querySelectorAll('.reveal, .stagger, .cut');
-  const io = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting){
-        e.target.classList.add('in');
-        e.target.querySelectorAll('[data-count]').forEach(animateCount);
-        io.unobserve(e.target);
-      }
+  /* ---------- open / closed status + hours list ---------- */
+  function renderStatus(){
+    const now = lagosNow(), [o,c] = HOURS[now.dow], h = now.mins/60;
+    const el = $("#status"), tx = $("#statusText");
+    if(h >= o && h < c){ el.classList.add("open"); tx.textContent = `Open now · until ${fmt12(c)}`; }
+    else{
+      el.classList.remove("open");
+      const next = h < o ? `today ${fmt12(o)}` : `${DAYN[(now.dow+1)%7]} ${fmt12(HOURS[(now.dow+1)%7][0])}`;
+      tx.textContent = `Closed · opens ${next}`;
+    }
+    const box = $("#hours"); box.querySelectorAll("div").forEach(n=>n.remove());
+    [[1,"Mon – Fri"],[6,"Saturday"],[0,"Sunday"]].forEach(([d,label])=>{
+      const row = document.createElement("div");
+      const isToday = d===now.dow || (d===1 && now.dow>=1 && now.dow<=5);
+      if(isToday) row.className = "today";
+      row.innerHTML = `<span>${label}</span><span>${fmt12(HOURS[d][0])} – ${fmt12(HOURS[d][1])}</span>`;
+      box.appendChild(row);
     });
-  }, {threshold:0.14});
-  revealEls.forEach(el=>io.observe(el));
-
-  document.querySelectorAll('#mnav a').forEach(a=>{
-    a.addEventListener('click', ()=> document.getElementById('mnav').classList.remove('show'));
-  });
-
-  // Hero load-in sequence
-  window.addEventListener('load', ()=>{
-    requestAnimationFrame(()=> document.body.classList.add('loaded'));
-    document.querySelectorAll('.hero-stats [data-count]').forEach(animateCount);
-  });
-
-  // Header shadow on scroll
-  const headerEl = document.querySelector('header');
-  function onScrollHeader(){
-    headerEl.classList.toggle('scrolled', window.scrollY > 12);
   }
-  document.addEventListener('scroll', onScrollHeader, {passive:true});
-  onScrollHeader();
+  renderStatus(); setInterval(renderStatus, 60000);
 
-  // Layered parallax: hero photo (foreground) and hero mark (background)
-  // drift at different rates, plus a subtle depth-drift across gallery tiles.
-  if(!reduceMotion){
-    const heroPhotoInner = document.getElementById('heroPhotoInner');
-    const heroMark = document.querySelector('.hero-mark');
-    const galleryFigures = document.querySelectorAll('.gallery-grid figure');
-    let targetY = 0, currentY = 0;
-    let targetMarkY = 0, currentMarkY = 0;
+  /* ---------- price board ---------- */
+  const tickSVG = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2v12M2 8h12"/></svg>';
+  const svcList = $("#svc");
+  SERVICES.forEach((s,i)=>{
+    const li = document.createElement("li");
+    li.setAttribute("role","checkbox"); li.setAttribute("aria-checked","false"); li.tabIndex = 0; li.dataset.id = s.id;
+    li.style.setProperty("--m", s.min); li.style.setProperty("--n", i);
+    li.innerHTML = `
+      <span class="s-idx mono">${String(i+1).padStart(2,"0")}</span>
+      <span class="s-name">${s.name.replace("&","&amp;")}</span>
+      <span class="s-desc">${s.desc}</span>
+      <span class="s-time"><span class="track"><span class="fill"></span></span><span class="mono">${s.min}${s.from?"+":""} min</span></span>
+      <span class="s-price">${s.from?"<small>from</small>":""}${naira(s.price)}</span>
+      <span class="tick" aria-hidden="true">${tickSVG}</span>`;
+    li.addEventListener("click", ()=>toggleSvc(s.id));
+    li.addEventListener("keydown", e=>{ if(e.key===" "||e.key==="Enter"){ e.preventDefault(); toggleSvc(s.id);} });
+    svcList.appendChild(li);
+  });
 
-    function onScrollParallax(){
-      targetY = Math.min(window.scrollY * 0.08, 26);
-      targetMarkY = Math.min(window.scrollY * 0.03, 40);
-    }
-    function raf(){
-      currentY += (targetY - currentY) * 0.08;
-      currentMarkY += (targetMarkY - currentMarkY) * 0.06;
-      if(heroPhotoInner) heroPhotoInner.style.transform = `translateY(${currentY}px) scale(1.06)`;
-      if(heroMark) heroMark.style.transform = `translateY(${currentMarkY}px) rotate(8deg)`;
+  /* ---------- booking chips ---------- */
+  function chip(parent, html, cls, onClick){
+    const b = document.createElement("button"); b.type="button"; b.className = "chip " + (cls||"");
+    b.innerHTML = html; b.setAttribute("aria-pressed","false"); b.addEventListener("click", onClick);
+    parent.appendChild(b); return b;
+  }
+  const pickSvc = $("#pickSvc");
+  SERVICES.forEach(s=>{ chip(pickSvc, `${s.name.replace("&","&amp;")}`, "", ()=>toggleSvc(s.id)).dataset.id = s.id; });
 
-      galleryFigures.forEach((fig, i)=>{
-        const rect = fig.getBoundingClientRect();
-        const center = rect.top + rect.height / 2 - window.innerHeight / 2;
-        const depth = (i % 2 === 0) ? 0.05 : 0.08;
-        const offset = Math.max(-16, Math.min(16, -center * depth * 0.06));
-        fig.style.transform = `translateY(${offset}px)`;
+  const pickBarber = $("#pickBarber");
+  ["Whoever's free", ...BARBERS].forEach((n,i)=>{
+    const b = chip(pickBarber, n, "", ()=>{ state.barber = i ? n : null; syncPressed(pickBarber, b); renderTicket(); });
+    if(i===0) b.setAttribute("aria-pressed","true");
+  });
+
+  const pickDay = $("#pickDay"), pickTime = $("#pickTime");
+  function buildDays(){
+    pickDay.innerHTML = "";
+    const now = lagosNow();
+    for(let i=0;i<7;i++){
+      const d = new Date(now.date); d.setUTCDate(d.getUTCDate()+i);
+      const dow = d.getUTCDay();
+      const lastSlot = HOURS[dow][1] - 1; // last start one hour before close
+      const disabled = i===0 && now.mins/60 >= lastSlot;
+      const label = i===0 ? "Today" : i===1 ? "Tmrw" : DAYN[dow];
+      const b = chip(pickDay, `<small>${label}</small><b>${d.getUTCDate()}</b>`, "day", ()=>{
+        state.day = {date:d, dow, today:i===0}; state.time = null;
+        syncPressed(pickDay, b); buildTimes(); renderTicket();
       });
-
-      requestAnimationFrame(raf);
+      b.disabled = disabled;
     }
-    document.addEventListener('scroll', onScrollParallax, {passive:true});
-    requestAnimationFrame(raf);
+    pickTime.innerHTML = '<span class="mono" style="color:var(--t-lo)">Pick a day first</span>';
   }
+  function buildTimes(){
+    pickTime.innerHTML = "";
+    const [o,c] = HOURS[state.day.dow], now = lagosNow();
+    for(let h=o; h<=c-1; h+=.5){
+      const past = state.day.today && h*60 <= now.mins + 30;
+      const b = chip(pickTime, fmt12(h), "time", ()=>{ state.time = h; syncPressed(pickTime, b); renderTicket(); });
+      b.disabled = past;
+    }
+  }
+  function syncPressed(group, on){ group.querySelectorAll(".chip").forEach(c=>c.setAttribute("aria-pressed", String(c===on))); }
+  buildDays();
 
-  const WHATSAPP_NUMBER = "2348000000000"; // TODO: replace with the shop's real WhatsApp number (international format, no + or spaces)
+  /* ---------- shared selection ---------- */
+  function toggleSvc(id){
+    state.svc.has(id) ? state.svc.delete(id) : state.svc.add(id);
+    document.querySelectorAll(`[data-id="${id}"]`).forEach(el=>{
+      const on = state.svc.has(id);
+      el.setAttribute(el.getAttribute("role")==="checkbox" ? "aria-checked" : "aria-pressed", String(on));
+    });
+    renderTicket();
+  }
+  const picked = () => SERVICES.filter(s=>state.svc.has(s.id));
 
-  const form = document.getElementById('bookingForm');
-  const confirmBox = document.getElementById('confirmBox');
+  /* ---------- ticket ---------- */
+  const ticketNo = String(Math.floor(Math.random()*90)+10).padStart(3,"0");
+  function renderTicket(){
+    const p = picked();
+    const total = p.reduce((a,s)=>a+s.price,0), mins = p.reduce((a,s)=>a+s.min,0), anyFrom = p.some(s=>s.from);
+    $("#tSvc").innerHTML = p.length ? p.map(s=>s.name.replace("&","&amp;")).join("<br>") : '<span class="empty">Pick from the board</span>';
+    $("#tDay").innerHTML = state.day ? state.day.date.toLocaleDateString("en-GB",{timeZone:"UTC", weekday:"short", day:"numeric", month:"short"}) : '<span class="empty">—</span>';
+    $("#tTime").innerHTML = state.time!=null ? fmt12(state.time) : '<span class="empty">—</span>';
+    $("#tBarber").textContent = state.barber || "Whoever's free";
+    $("#tDur").innerHTML = mins ? `~${mins}${anyFrom?"+":""} min` : '<span class="empty">—</span>';
+    $("#tTotal").textContent = (anyFrom?"from ":"") + naira(total);
+    $("#tNo").textContent = p.length ? "A" + ticketNo : "—";
+    // floating tally on the board
+    const t = $("#tally");
+    t.classList.toggle("on", p.length>0);
+    $("#tallyMain").textContent = p.length ? `${anyFrom?"from ":""}${naira(total)}` : "0 picked";
+    $("#tallySub").textContent = p.length ? `${p.length} service${p.length>1?"s":""} · ~${mins} min` : "";
+    $("#err").textContent = "";
+  }
+  renderTicket();
 
-  form.addEventListener('submit', function(e){
+  /* ---------- send ---------- */
+  $("#form").addEventListener("submit", e=>{
     e.preventDefault();
-    if(!form.checkValidity()){ form.reportValidity(); return; }
-    const name = document.getElementById('fname').value.trim();
-    const phone = document.getElementById('fphone').value.trim();
-    const service = document.getElementById('fservice').value;
-    const barber = document.getElementById('fbarber').value;
-    const date = document.getElementById('fdate').value;
-    const time = document.getElementById('ftime').value;
-    const notes = document.getElementById('fnotes').value.trim();
-
-    let msg = `Hi Cutting Edge & Games! I'd like to book a chair.%0A%0A`;
-    msg += `*Name:* ${encodeURIComponent(name)}%0A`;
-    msg += `*Phone:* ${encodeURIComponent(phone)}%0A`;
-    msg += `*Service:* ${encodeURIComponent(service)}%0A`;
-    msg += `*Preferred barber:* ${encodeURIComponent(barber)}%0A`;
-    msg += `*Date:* ${encodeURIComponent(date)}%0A`;
-    msg += `*Time:* ${encodeURIComponent(time)}`;
-    if(notes){ msg += `%0A*Notes:* ${encodeURIComponent(notes)}`; }
-
-    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`;
-    confirmBox.classList.add('show');
-    window.open(url, '_blank');
+    const name = $("#fname").value.trim(), phone = $("#fphone").value.trim(), notes = $("#fnotes").value.trim();
+    const missing = [];
+    if(!state.svc.size) missing.push("a service");
+    if(!state.day) missing.push("a day");
+    if(state.time==null) missing.push("a time");
+    if(!name) missing.push("your name");
+    if(!phone) missing.push("your phone");
+    if(missing.length){ $("#err").textContent = "Still need " + missing.join(", ") + "."; return; }
+    const p = picked();
+    const lines = [
+      `Hi Cutting Edge & Games! Ticket A${ticketNo}.`, ``,
+      `*Name:* ${name}`, `*Phone:* ${phone}`,
+      `*Service:* ${p.map(s=>s.name).join(" + ")}`,
+      `*Day:* ${$("#tDay").textContent}`, `*Time:* ${fmt12(state.time)}`,
+      `*Barber:* ${state.barber || "No preference"}`,
+      `*Est.:* ${$("#tTotal").textContent}`
+    ];
+    if(notes) lines.push(`*Notes:* ${notes}`);
+    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(lines.join("\n"))}`, "_blank", "noopener");
   });
-</script>
 
+  /* ---------- mirror wall: drag, buttons, counter ---------- */
+  const strip = $("#strip"), frames = [...strip.querySelectorAll(".frame")];
+  const step = dir => { const w = frames[0].getBoundingClientRect().width + parseFloat(getComputedStyle(strip).gap); strip.scrollBy({left:dir*w, behavior: reduce?"auto":"smooth"}); };
+  $("#wallPrev").onclick = ()=>step(-1); $("#wallNext").onclick = ()=>step(1);
+  strip.addEventListener("keydown", e=>{ if(e.key==="ArrowRight"){e.preventDefault();step(1);} if(e.key==="ArrowLeft"){e.preventDefault();step(-1);} });
+  strip.addEventListener("scroll", ()=>{
+    const x = strip.scrollLeft, w = frames[0].getBoundingClientRect().width + parseFloat(getComputedStyle(strip).gap);
+    const i = Math.min(frames.length-1, Math.round(x / w));
+    const atEnd = x + strip.clientWidth >= strip.scrollWidth - 4;
+    $("#wallNow").textContent = String((atEnd ? frames.length-1 : i)+1).padStart(2,"0");
+  }, {passive:true});
+  let down=false, sx=0, sl=0, moved=0;
+  strip.addEventListener("pointerdown", e=>{ if(e.pointerType!=="mouse") return; down=true; moved=0; sx=e.clientX; sl=strip.scrollLeft; });
+  addEventListener("pointermove", e=>{ if(!down) return; const dx=e.clientX-sx; moved=Math.max(moved,Math.abs(dx)); if(moved>4) strip.classList.add("dragging"); strip.scrollLeft = sl - dx; });
+  addEventListener("pointerup", ()=>{ if(!down) return; down=false; strip.classList.remove("dragging"); });
+
+  /* ---------- in-view triggers ---------- */
+  const io = new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add("seen"); io.unobserve(e.target);} }), {threshold:.2});
+  // observe the wrapper: a fully clipped element never reports as intersecting
+  document.querySelectorAll(".board-head, .wall-head, .svc, .wall").forEach(el=>io.observe(el));
+
+  /* ---------- header + drawer ---------- */
+  const bar = $("#bar"), burger = $("#burger"), drawer = $("#drawer");
+  const onScroll = ()=>bar.classList.toggle("solid", scrollY > 20);
+  addEventListener("scroll", onScroll, {passive:true}); onScroll();
+  burger.onclick = ()=>{ const open = drawer.classList.toggle("open"); burger.setAttribute("aria-expanded", open); bar.classList.add("solid"); };
+  drawer.querySelectorAll("a").forEach(a=>a.onclick = ()=>{ drawer.classList.remove("open"); burger.setAttribute("aria-expanded","false"); });
+})();
+</script>
 </body>
 </html>
